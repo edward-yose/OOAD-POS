@@ -2,6 +2,7 @@ package view;
 
 import view.View_HRD;
 import view.View_Manager;
+import view.View_TransactionManagement;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ public class View_Login extends JFrame implements ActionListener {
 	
 	private JButton buttonViewHRD;
 	private JButton buttonViewManager;
+	private JButton buttonViewTransactionManagement;
 
 	public View_Login() {
 		// JFrame
@@ -36,6 +38,11 @@ public class View_Login extends JFrame implements ActionListener {
 		buttonViewManager.addActionListener(this);
 		panelButtons.add(buttonViewManager);
 		
+		// JButton Insert
+		buttonViewTransactionManagement = new JButton("View_TransactionManagement");
+		buttonViewTransactionManagement.addActionListener(this);
+		panelButtons.add(buttonViewTransactionManagement);
+		
 		add(panelButtons);
 
 		setVisible(true);
@@ -51,8 +58,11 @@ public class View_Login extends JFrame implements ActionListener {
 		else if (e.getSource() == buttonViewManager) {
 			new View_Manager();
 		}
+		else if (e.getSource() == buttonViewTransactionManagement) {
+			new View_TransactionManagement();
+		}
 //		else if (e.getSource() == button) {
-//			
+//		
 //		}
 		
 	}
