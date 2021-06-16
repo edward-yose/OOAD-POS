@@ -25,7 +25,7 @@ public class View_HRD extends JFrame{
 	}
 	
 	public void setField() {
-	
+		
 	}
 
 	public void setAddButton() {
@@ -36,7 +36,7 @@ public class View_HRD extends JFrame{
 	
 	public View_HRD() {
 		setAddButton();
-		setFrame();  
+		setFrame();
 		setField();
 		setVisible(true);
 	}
