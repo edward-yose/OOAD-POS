@@ -33,6 +33,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		// JFrame
 		setTitle("Transaction Management");
 		setSize(800, 600);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// JPanel ContentPane
