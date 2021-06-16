@@ -11,12 +11,12 @@ import connect.Connect;
 public class TransactionItem {
 	private int transactionid;
 	private int productid;
-	private int qty;
+	private int quantity;
 	
-	public TransactionItem(int transactionid, int productid, int qty) {
+	public TransactionItem(int transactionid, int productid, int quantity) {
 		this.transactionid = transactionid;
 		this.productid=productid;
-		this.qty=qty;
+		this.quantity=quantity;
 	}
 
 	public boolean insert() {
@@ -24,7 +24,7 @@ public class TransactionItem {
 			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transactionitem values(?,?,?)");
 			ps.setInt(1,transactionid);
 			ps.setInt(2,productid);
-			ps.setInt(3, qty);
+			ps.setInt(3, quantity);
 			return (ps.executeUpdate() == 1);
 
 		} catch (SQLException e) {
@@ -57,6 +57,30 @@ public class TransactionItem {
 		}
 		
 		return results;
+	}
+
+	public int getTransactionid() {
+		return transactionid;
+	}
+
+	public void setTransactionid(int transactionid) {
+		this.transactionid = transactionid;
+	}
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }
