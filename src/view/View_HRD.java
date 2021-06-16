@@ -1,13 +1,19 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class View_HRD extends JFrame{
@@ -19,21 +25,25 @@ public class View_HRD extends JFrame{
 	private JButton delete_user;
 	private JPanel panel_HRD;
 	
-	private void setFrame() {
+	private void initLayout() {
 		setSize(800, 600);
 		setTitle("ItemList");
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
-	
-	public void setField() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel contentPane = new JPanel();
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		setContentPane(contentPane);
+
+		JScrollPane scrollPane = new JScrollPane();
+		
 		table = new JTable();
 		
-	}
-
-	public void setAddButton() {
-		add_user = new JButton("Add User");
-		add(add_user, BorderLayout.NORTH);
+		scrollPane.setViewportView(table);
+		add(scrollPane);
+		
+		setVisible(true);
 	}
 	
 	private void setUpDataModel() {
@@ -45,12 +55,7 @@ public class View_HRD extends JFrame{
 	}
 	
 	public View_HRD() {
-		setAddButton();
-		setFrame();
-		setField();
+		initLayout();
 		setUpDataModel();
-		setVisible(true);
 	}
-	
-	
 }
