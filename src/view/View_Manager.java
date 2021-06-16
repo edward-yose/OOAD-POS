@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,18 +39,13 @@ public class View_Manager extends JFrame implements ActionListener {
 	private JSpinner spinnerYear;	
 	private JButton buttonQuery;
 	
-	private JFrame productFrame;
-	private JTable productTable;
-	private DefaultTableModel productDtm;
-	
 	private void initLayout() {
 		// JFrame
-		setTitle("Transaction Report View");
+		setTitle("Item View");
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// JPanel
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
@@ -62,18 +58,15 @@ public class View_Manager extends JFrame implements ActionListener {
 		table = new JTable();
 		table.setDefaultEditor(Object.class, null);
 		
-		scrollPane.setViewportView(table);
-		add(scrollPane);
-		
-		// JTable MouseListener
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				int row = table.rowAtPoint(evt.getPoint());
-				int transactionid = (int) table.getValueAt(row, 0);
-				System.out.println("Row: " + row + ", transactionID: " + transactionid);
-				getAllTransactionItem(transactionid);
+				getAllTransactionItem(row);
 			}
 		});
+		
+		scrollPane.setViewportView(table);
+		add(scrollPane);
 		
 		// JPanel Control
 		JPanel panelControl = new JPanel();
@@ -139,7 +132,6 @@ public class View_Manager extends JFrame implements ActionListener {
 		initLayout();
 		setUpDataModel();
 		refreshData();
-		prepProductFrame();
 	}
 	
 	private void setUpDataModel() {
@@ -164,40 +156,6 @@ public class View_Manager extends JFrame implements ActionListener {
 		}
 	}
 	
-	private void prepProductFrame() {
-				
-		productFrame = new JFrame();
-		
-		productFrame.setTitle("TransactionItem View");
-		productFrame.setSize(600, 400);
-		productFrame.setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		
-		// JScrollPane
-		JScrollPane scrollPane = new JScrollPane();
-		
-		// JTable
-		productTable = new JTable();
-		productTable.setDefaultEditor(Object.class, null);
-		
-		// JPanel
-		JPanel contentPane = new JPanel();
-		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		contentPane.setLayout(new GridLayout(1, 1, 10, 10));
-		productFrame.setContentPane(contentPane);
-		
-		// TableModel_TransactionItem
-		productDtm = new DefaultTableModel(
-			new String[] { "transaction_id", "product_id", "quantity" },
-			0
-		);
-		productTable.setModel(productDtm);
-				
-		scrollPane.setViewportView(productTable);
-		productFrame.add(scrollPane);
-		
-	}
-	
 	private void getTransactionReport() {		
 		int month = comboBoxMonth.getSelectedIndex() + 1;
 		int year = (int)spinnerYear.getValue();
@@ -219,22 +177,8 @@ public class View_Manager extends JFrame implements ActionListener {
 		return;
 	}
 	
-	private void getAllTransactionItem(int transactionId) {
-		Vector<TransactionItem> transactionitems = TransactionController.getAllTransactionItem(transactionId);
+	private void getAllTransactionItem(int id) {
 				
-		// Get table contents
-		productDtm.setRowCount(0);
-		
-		for (TransactionItem i : transactionitems) {
-			productDtm.addRow(new Object[] {
-				i.getTransactionid(),
-				i.getProductid(),
-				i.getQuantity()
-			});
-		}
-				
-		productFrame.setVisible(true);		
-		
 		return;
 	}
 

@@ -11,12 +11,12 @@ import connect.Connect;
 public class TransactionItem {
 	private int transactionid;
 	private int productid;
-	private int quantity;
+	private int qty;
 	
-	public TransactionItem(int transactionid, int productid, int quantity) {
+	public TransactionItem(int transactionid, int productid, int qty) {
 		this.transactionid = transactionid;
 		this.productid=productid;
-		this.quantity=quantity;
+		this.qty=qty;
 	}
 
 	public boolean insert() {
@@ -24,7 +24,7 @@ public class TransactionItem {
 			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transactionitem values(?,?,?)");
 			ps.setInt(1,transactionid);
 			ps.setInt(2,productid);
-			ps.setInt(3, quantity);
+			ps.setInt(3, qty);
 			return (ps.executeUpdate() == 1);
 
 		} catch (SQLException e) {
@@ -37,7 +37,7 @@ public class TransactionItem {
 	
 	public static Vector<TransactionItem> getTransactionItem(int transactionId) {
 		Vector<TransactionItem> results = new Vector<TransactionItem>();
-		String query = "SELECT * FROM TransactionItem WHERE transactionID = ? ";	
+		String query = "SELECT * FROM TransactionItem WHERE TransactionId = ? ";	
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
@@ -58,31 +58,5 @@ public class TransactionItem {
 		
 		return results;
 	}
-
-	public int getTransactionid() {
-		return transactionid;
-	}
-
-	public void setTransactionid(int transactionid) {
-		this.transactionid = transactionid;
-	}
-
-	public int getProductid() {
-		return productid;
-	}
-
-	public void setProductid(int productid) {
-		this.productid = productid;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	
-	
 	
 }
