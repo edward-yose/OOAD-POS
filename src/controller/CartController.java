@@ -27,7 +27,7 @@ public class CartController {
 			return "Insufficient stock";
 		}
 		
-		Cart i = new Cart(0, qty);
+		Cart i = new Cart(productid, qty);
 		boolean isSuccess = i.insert();
 		
 		if(isSuccess == false) {
