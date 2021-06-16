@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import Connect.Connect;
+import connect.Connect;
 
 public class Product {
 	private Integer id;
@@ -100,6 +101,32 @@ public class Product {
 			e.printStackTrace();
 		}
 		return status;
+	}
+	
+	public static boolean selectExist(int productid) {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where productid=?");
+			ps.setInt(1, productid);
+			ResultSet rs = ps.executeQuery();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static int stockCheck(int productid) {
+		int stok=0;
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where productid=?");
+			ps.setInt(1, productid);
+			ResultSet rs = ps.executeQuery();
+			stok=rs.getInt(5);
+			return stok;
+		} catch (SQLException e) {
+			e.printStackTrace();;
+		}
+		return stok ;
 	}
 	
 	public Integer getId() {

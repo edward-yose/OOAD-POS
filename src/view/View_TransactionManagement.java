@@ -2,6 +2,7 @@ package view;
 
 import model.Cart;
 import model.Product;
+import controller.CartController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -121,10 +122,10 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		
 	}
 	private void add() {
-		int id = (int)spinnerId.getValue();
-		int quantity = (int)spinnerQuantity.getValue();
+		int productid = (int)spinnerId.getValue();
+		int qty = (int)spinnerQuantity.getValue();
 		
-		String error = CartController.insertItem(name, quantity);
+		String error = CartController.addItem(productid, qty);
 		if(error == null) {
 			refreshData();
 		}else {
@@ -133,8 +134,8 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	}
 	
 	private void remove() {
-		int id = (int)spinnerId.getValue();
-		String error =  CartController.deleteItem(id);
+		int productid = (int)spinnerId.getValue();
+		String error =  CartController.removeItem(productid, 0);
 		if(error ==null) {
 			refreshData();
 		}else {
@@ -149,9 +150,9 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
-//			add();
+			add();
 		} else if (e.getSource() == buttonRemove) {
-//			remove();
+			remove();
 		} else if (e.getSource() == buttonCheckOut) {
 			checkout();
 		}
