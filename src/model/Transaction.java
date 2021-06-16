@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
-import connect.Connector;
+import connect.Connect;
 
 public class Transaction {
 	
@@ -14,12 +14,8 @@ public class Transaction {
 	private Integer employeeId;
 	private String paymentType;
 	
-	private Connector con;
+	private Connect con;
 	
-
-	public Transaction() {
-		// TODO Auto-generated constructor stub
-	}
 
 
 	public Transaction(int id, Date purchaseDate, int employeeId, String paymentType) {
@@ -33,7 +29,7 @@ public class Transaction {
 		Vector<Transaction> results = new Vector<Transaction>();
 		
 		try {
-			Statement st = Connector.connect().createStatement();
+			Statement st = Connect.connect().createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM transaction");
 			
 			while(rs.next()) {
@@ -57,7 +53,7 @@ public class Transaction {
 		String query = "SELECT * FROM transaction WHERE MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";	
 		
 		try {
-			PreparedStatement ps = Connector.connect().prepareStatement(query);
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
 			ps.setInt(1, month);
 			ps.setInt(2, year);
 			ResultSet rs = ps.executeQuery();
@@ -119,12 +115,12 @@ public class Transaction {
 	}
 
 
-	public Connector getCon() {
+	public Connect getCon() {
 		return con;
 	}
 
 
-	public void setCon(Connector con) {
+	public void setCon(Connect con) {
 		this.con = con;
 	}
 	
