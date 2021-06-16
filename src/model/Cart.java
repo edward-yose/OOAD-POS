@@ -61,7 +61,7 @@ public class Cart {
 	
 	public boolean delete() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("delete from cartitem where productid=?");
+			PreparedStatement ps = Connect.connect().prepareStatement("DELETE from cartitem where productid=?");
 			ps.setInt(1, productid);
 			return ps.executeUpdate() ==1;
 		} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class Cart {
 	
 	public boolean deleteAll() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("delete from cartitem");
+			PreparedStatement ps = Connect.connect().prepareStatement("DELETE from cartitem");
 			return ps.executeUpdate() ==1;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class Cart {
 	
 	public int select() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("Select * from cartitem where productid=?");
+			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * from cartitem where productid=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
 			return rs.getInt(1);

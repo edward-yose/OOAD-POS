@@ -70,6 +70,10 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		labelQuantity.setHorizontalAlignment(SwingConstants.RIGHT);
 		panelFields.add(labelQuantity);
 		
+		// JSpinner ID
+		spinnerId = new JSpinner();
+		panelFields.add(spinnerId);
+		
 		// JSpinner Quantity
 		spinnerQuantity = new JSpinner();
 		panelFields.add(spinnerQuantity);
@@ -86,7 +90,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		panelButtons.add(buttonAdd);
 		
 		// JButton Remove
-		buttonRemove = new JButton("Remove");
+		buttonRemove = new JButton("Remove item");
 		buttonRemove.addActionListener(this);
 		panelButtons.add(buttonRemove);
 		
@@ -104,7 +108,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	
 	private void setUpDataModel() {
 		dtm = new DefaultTableModel(
-			new String[] { "Product ID","Quantity" },
+			new String[] {"Product ID","Quantity"},
 			0
 		);
 		table.setModel(dtm);
