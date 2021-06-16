@@ -1,98 +1,61 @@
 package model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import connect.Connect;
+import java.sql.*;
 
-import com.mysql.jdbc.PreparedStatement;
-
-import Connect.Connect;
 
 public class Product {
-	private Integer id;
-	private String name;
-	private String description;
-	private Integer price;
-	private Integer stock;
+	private int id;
 	
-	private Connect conn;
-	
-	public Product(Integer id, String name, String description, Integer price, Integer stock) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.stock = stock;
-	}
-	
-	public Product View() {
-		
-		String q = "SELECT * FROM Product";
-		PreparedStatement ps = conn.PrepareStatement(q);
-		
-		
+	public int price() {
 		try {
-			ps.setInt(1, this.id);
-			ps.setString(2, name);
-			ps.setString(3, this.description);
-			ps.setInt(4, this.price);
-			ps.setInt(5, this.stock);
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where id=?");
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			
+			return rs.getInt(4);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return 0;
 		}
-		
+	}
+	public int stock() {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where id=?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			return rs.getInt(5);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	public boolean available() {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where id=?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
-	public Integer getId() {
-		return id;
+	public boolean updateStock(int stockMin, int id) {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("update product set stock=? where id=?");
+			ps.setInt(1, stockMin );
+			ps.setInt(2, id);
+			return ps.executeUpdate() ==1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("error update cart item");
+			return false;
+		}
 	}
-
-	public void setId(Integer id) {
+	
+	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
-	public Connect getConn() {
-		return conn;
-	}
-
-	public void setConn(Connect conn) {
-		this.conn = conn;
-	}
-	
 	
 }
-
