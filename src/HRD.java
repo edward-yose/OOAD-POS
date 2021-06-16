@@ -1,4 +1,5 @@
 import view.View_HRD;
+import view.View_Manager;
 
 public class HRD {
 
