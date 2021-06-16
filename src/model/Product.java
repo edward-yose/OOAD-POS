@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import Connect.Connect;
+import connect.Connect;
 
 public class Product {
 	private Integer id;
