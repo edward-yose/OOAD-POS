@@ -4,13 +4,22 @@ import view.View_HRD;
 import view.View_Manager;
 import view.View_TransactionManagement;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class View_Login extends JFrame implements ActionListener {
 	
@@ -18,6 +27,10 @@ public class View_Login extends JFrame implements ActionListener {
 	private JButton buttonViewManager;
 	private JButton buttonViewTransactionManagement;
 	private JButton buttonViewProduct;
+	
+	private JTextField fieldUsername;
+	private JPasswordField fieldPassword;
+	private JButton buttonLogin;
 
 	public View_Login() {
 		// JFrame
@@ -25,6 +38,11 @@ public class View_Login extends JFrame implements ActionListener {
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// JPanel contentPane
+		JPanel contentPane = new JPanel();
+		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		setContentPane(contentPane);
 				
 		// JPanel Buttons
 		JPanel panelButtons = new JPanel();
@@ -50,10 +68,44 @@ public class View_Login extends JFrame implements ActionListener {
 		buttonViewTransactionManagement.addActionListener(this);
 		panelButtons.add(buttonViewTransactionManagement);
 
-		
 		add(panelButtons);
+		
+		
+		// JPanel Login
+		JPanel panelLogin = new JPanel();
+		panelLogin.setLayout(new FlowLayout());
+		
+		// JLabel Username
+		JLabel labelUsername = new JLabel("Username: ");
+		labelUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelLogin.add(labelUsername);
+		
+		// JTextField Username
+		fieldUsername = new JTextField();
+		fieldUsername.setPreferredSize(new Dimension(100, 20));
+		panelLogin.add(fieldUsername);
+		
+		// JLabel Password
+		JLabel labelPassword = new JLabel("Password: ");
+		labelPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelLogin.add(labelPassword);
+		
+		// JTextField Password
+		fieldPassword = new JPasswordField();
+		fieldPassword.setPreferredSize(new Dimension(100, 20));
+		panelLogin.add(fieldPassword);
+		
+		// JButton Login
+		buttonLogin = new JButton("Login");
+		buttonLogin.addActionListener(this);
+		panelLogin.add(buttonLogin);
+		
+		add(panelLogin);
+		
 
 		setVisible(true);
+
+		fieldUsername.requestFocusInWindow();
 		
 	}
 
@@ -80,6 +132,9 @@ public class View_Login extends JFrame implements ActionListener {
 //		
 //		}
 		
+		else if (e.getSource() == buttonLogin){
+			dispose();
+			// TO-DO LOGIN STUFF			
+		}
 	}
-
 }
