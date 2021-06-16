@@ -8,10 +8,12 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class View_HRD extends JFrame{
 	
 	private JTable table;
+	private DefaultTableModel utm;
 	private JButton add_user;
 	private JButton edit_user;
 	private JButton delete_user;
@@ -26,18 +28,27 @@ public class View_HRD extends JFrame{
 	
 	public void setField() {
 		table = new JTable();
+		
 	}
 
 	public void setAddButton() {
 		add_user = new JButton("Add User");
 		add(add_user, BorderLayout.NORTH);
-		
+	}
+	
+	private void setUpDataModel() {
+		utm = new DefaultTableModel(
+				new String[] { "id", "role_id", "name","username", "salary", "status"},
+				0
+			);
+			table.setModel(utm);
 	}
 	
 	public View_HRD() {
 		setAddButton();
 		setFrame();
 		setField();
+		setUpDataModel();
 		setVisible(true);
 	}
 	
