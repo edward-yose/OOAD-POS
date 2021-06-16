@@ -1,7 +1,13 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /controller/
 /model/
 /view/
+=======
+/view/
+/controller/
+/model/
+>>>>>>> Stashed changes
 =======
 /view/
 /controller/

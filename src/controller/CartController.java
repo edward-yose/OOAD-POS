@@ -27,7 +27,11 @@ public class CartController {
 			return "Insufficient stock";
 		}
 		
+<<<<<<< Updated upstream
 		Cart i = new Cart(productid, qty);
+=======
+		Cart i = new Cart(0, qty);
+>>>>>>> Stashed changes
 		boolean isSuccess = i.insert();
 		
 		if(isSuccess == false) {
