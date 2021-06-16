@@ -3,6 +3,8 @@ package view;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.TransactionController;
 import model.Transaction;
+import model.TransactionItem;
 
 public class View_Manager extends JFrame implements ActionListener {
 	
@@ -40,6 +43,7 @@ public class View_Manager extends JFrame implements ActionListener {
 		// JFrame
 		setTitle("Item View");
 		setSize(800, 600);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel contentPane = new JPanel();
@@ -52,6 +56,14 @@ public class View_Manager extends JFrame implements ActionListener {
 		
 		// JTable
 		table = new JTable();
+		table.setDefaultEditor(Object.class, null);
+		
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				int row = table.rowAtPoint(evt.getPoint());
+				getAllTransactionItem(row);
+			}
+		});
 		
 		scrollPane.setViewportView(table);
 		add(scrollPane);
@@ -148,9 +160,8 @@ public class View_Manager extends JFrame implements ActionListener {
 		int month = comboBoxMonth.getSelectedIndex() + 1;
 		int year = (int)spinnerYear.getValue();
 		
-		System.out.println("Month: " + month + ", and year: " + year);
+//		System.out.println("Month: " + month + ", and year: " + year);
 		
-
 		dtm.setRowCount(0);
 		Vector<Transaction> transactions = TransactionController.viewTransactionReport(month, year);
 		
@@ -165,14 +176,18 @@ public class View_Manager extends JFrame implements ActionListener {
 		
 		return;
 	}
+	
+	private void getAllTransactionItem(int id) {
+				
+		return;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == buttonQuery) {		
 			getTransactionReport();
-		} 
+		}
 	}
-	
-	
+		
 }

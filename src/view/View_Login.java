@@ -22,6 +22,7 @@ public class View_Login extends JFrame implements ActionListener {
 		// JFrame
 		setTitle("Login View");
 		setSize(800, 600);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 		// JPanel Buttons
@@ -53,12 +54,15 @@ public class View_Login extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == buttonViewHRD) {
+			dispose();
 			new View_HRD();
 		}
 		else if (e.getSource() == buttonViewManager) {
+			dispose();
 			new View_Manager();
 		}
 		else if (e.getSource() == buttonViewTransactionManagement) {
+			dispose();
 			new View_TransactionManagement();
 		}
 //		else if (e.getSource() == button) {
