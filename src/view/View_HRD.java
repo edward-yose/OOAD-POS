@@ -68,8 +68,6 @@ public class View_HRD extends JFrame{
 		edit_user.addActionListener(null);
 		panel2.add(edit_user);
 		
-		// JButton checkout
-		
 		setVisible(true);
 	}
 	
