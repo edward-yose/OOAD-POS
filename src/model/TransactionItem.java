@@ -1,13 +1,5 @@
 package model;
 
-public class TransactionItem {
-
-	public TransactionItem() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
-package model;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
