@@ -19,20 +19,27 @@ public class CartController {
 			return "must exist in database!";
 		}
 
-		if(qty <0) {
+		if(qty <=0) {
 			return "Cannot below zero";
 		}
 		if(Product.stockCheck(productid)<qty)
 		{
 			return "Insufficient stock";
-		}		
+		}
+		
 		Cart i = new Cart(0, qty);
 		boolean isSuccess = i.insert();
 		
 		if(isSuccess == false) {
-			return "Insert Failed";
+		return "Insert Failed";
 		}
-		else return null;
+		else {
+			return null;
+		}
+			
+		
+
+		
 	}
 	
 	public static String removeItem(int productid,int qty) {

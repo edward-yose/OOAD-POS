@@ -105,10 +105,15 @@ public class Product {
 	
 	public static boolean selectExist(int productid) {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where productid=?");
+			PreparedStatement ps = Connect.connect().prepareStatement("Select * FROM product WHERE id=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
-			return true;
+			if(rs.wasNull()) {
+				return false;
+			}
+			else {
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -116,17 +121,15 @@ public class Product {
 	}
 	
 	public static int stockCheck(int productid) {
-		int stok=0;
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("Select * from product where productid=?");
+			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * FROM product WHERE id=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
-			stok=rs.getInt(5);
-			return stok;
+			return rs.getInt(5);
 		} catch (SQLException e) {
-			e.printStackTrace();;
+			e.printStackTrace();
+			return 1000;
 		}
-		return stok ;
 	}
 	
 	public Integer getId() {
