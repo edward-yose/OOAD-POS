@@ -17,6 +17,7 @@ public class View_Login extends JFrame implements ActionListener {
 	private JButton buttonViewHRD;
 	private JButton buttonViewManager;
 	private JButton buttonViewTransactionManagement;
+	private JButton buttonViewProduct;
 
 	public View_Login() {
 		// JFrame
@@ -29,20 +30,26 @@ public class View_Login extends JFrame implements ActionListener {
 		JPanel panelButtons = new JPanel();
 		panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
 		
-		// JButton Insert
+		// JButton HRD
 		buttonViewHRD = new JButton("View_HRD");
 		buttonViewHRD.addActionListener(this);
 		panelButtons.add(buttonViewHRD);
+				
+		// JButton Product
+		buttonViewProduct = new JButton("View_Product");
+		buttonViewProduct.addActionListener(this);
+		panelButtons.add(buttonViewProduct);
 		
-		// JButton Insert
+		// JButton Manager
 		buttonViewManager = new JButton("View_Manager");
 		buttonViewManager.addActionListener(this);
 		panelButtons.add(buttonViewManager);
 		
-		// JButton Insert
+		// JButton Transaction Management
 		buttonViewTransactionManagement = new JButton("View_TransactionManagement");
 		buttonViewTransactionManagement.addActionListener(this);
 		panelButtons.add(buttonViewTransactionManagement);
+
 		
 		add(panelButtons);
 
@@ -56,6 +63,10 @@ public class View_Login extends JFrame implements ActionListener {
 		if (e.getSource() == buttonViewHRD) {
 			dispose();
 			new View_HRD();
+		}
+		else if (e.getSource() == buttonViewProduct) {
+			dispose();
+			new View_Product();
 		}
 		else if (e.getSource() == buttonViewManager) {
 			dispose();
