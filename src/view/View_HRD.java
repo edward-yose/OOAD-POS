@@ -25,7 +25,7 @@ public class View_HRD extends JFrame{
 	}
 	
 	public void setField() {
-		
+		table = new JTable();
 	}
 
 	public void setAddButton() {
