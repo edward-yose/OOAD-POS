@@ -27,7 +27,7 @@ public class Employee {
 		this.id = id;
 		this.roleID = roleID;
 		this.name = name;
-		this.username = username;
+		this.username = username;		
 		this.salary = salary;
 		this.status = status;
 		this.password = password;
