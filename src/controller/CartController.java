@@ -76,6 +76,11 @@ public class CartController {
 			return null;
 		}
 	}
+	
+	public static String deleteAll() {
+		Cart.deleteAll();
+		return "Data Saved!";
+	}
 
 
 	public static void setGrandTotal(int grandTotal) {

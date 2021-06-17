@@ -182,11 +182,9 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		String error = TransactionController.pushTransaction(Employee.idNow,payMethod);
 		error=TransactionItemController.pushTransactionItem();
 		error=ProductM_Controller.updateStock();
-		if(error == null) {
-			refreshData();
-		}else {
-			JOptionPane.showMessageDialog(this, error);
-		}
+		error= CartController.deleteAll();
+		refreshData();	
+		JOptionPane.showMessageDialog(this, error);
 	}
 
 	@Override

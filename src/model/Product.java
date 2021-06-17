@@ -151,8 +151,7 @@ public class Product {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
-<<<<<<< HEAD
-=======
+
 		}	
 	}
 	
@@ -173,7 +172,7 @@ public class Product {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
->>>>>>> 21603e7f75c83d908e7f1fb5d487a548c33f188a
+			return false;
 		}
 			
 	}
