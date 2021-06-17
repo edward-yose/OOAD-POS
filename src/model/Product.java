@@ -151,6 +151,29 @@ public class Product {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
+<<<<<<< HEAD
+=======
+		}	
+	}
+	
+	public boolean updateStock() {
+		try {
+			Statement st = Connect.connect().createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM cartitem");
+			while(rs.next()) {
+				int productidtemp;
+				int qtytemp;
+				productidtemp=rs.getInt("productid");
+				qtytemp=rs.getInt("quantity");
+				PreparedStatement ps = Connect.connect().prepareStatement("update product set stock=stock-? where id=?");
+				ps.setInt(1,qtytemp);
+				ps.setInt(2, productidtemp);
+				ps.executeUpdate();
+			}
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+>>>>>>> 21603e7f75c83d908e7f1fb5d487a548c33f188a
 		}
 			
 	}
