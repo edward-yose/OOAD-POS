@@ -4,13 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -40,7 +40,9 @@ public class View_Product extends JFrame implements ActionListener{
 		initLayout();
 		setUpData();
 		AddProduct();
-		
+		DeleteProduct();
+		UpdateProduct();
+	
 	}
 	
 	private void initLayout() {
@@ -54,7 +56,20 @@ public class View_Product extends JFrame implements ActionListener{
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
 		setContentPane(contentPane);
+		
+		JScrollPane scroll = new JScrollPane();
+		
+		table = new JTable();
+		
+		scroll.setViewportView(table);
+		add(scroll);
 	
+		JPanel panelCtrl = new JPanel();
+		panelCtrl.setLayout(new GridLayout(1, 2, 10, 10));
+		
+		JPanel panelP = new JPanel();
+		panelP.setLayout(new GridLayout(3,2));
+		
 		// JPanel Buttons
 		JPanel panelButtons = new JPanel();
 		panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
@@ -74,13 +89,22 @@ public class View_Product extends JFrame implements ActionListener{
 		buttonUpdate.addActionListener(this);
 		panelButtons.add(buttonUpdate);
 		
+		panelCtrl.add(panelP);
+		panelCtrl.add(panelButtons);
+		
+		add(panelCtrl);
+		
 		setVisible(true);
 	}
 	
 	private void setUpData() {
-		dtm = new DefaultTableModel(new String[] {"Product ID", "Name", "Description", "Price", "Stock"}, 0);
+		dtm = new DefaultTableModel(
+			new String[] {"Product ID", "Name", "Description", "Price", "Stock"}, 
+			0
+		);
 		table.setModel(dtm);
 	}
+
 	
 	private void AddProduct() {
 		
@@ -188,6 +212,8 @@ public class View_Product extends JFrame implements ActionListener{
 		add(buttonSave, BorderLayout.SOUTH);
 		
 	}
+	
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
