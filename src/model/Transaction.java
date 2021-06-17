@@ -1,14 +1,11 @@
 package model;
 
-import java.io.ObjectOutputStream.PutField;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Date;
 import java.util.*;
 import connect.Connect;
-
 
 public class Transaction {
 	
@@ -51,8 +48,6 @@ public class Transaction {
 		return results;
 	}
 	
-	
-	
 	public static Vector<Transaction> viewTransactionReport(int month, int year) {
 		Vector<Transaction> results = new Vector<Transaction>();
 		String query = "SELECT * FROM transaction WHERE MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";	
@@ -77,23 +72,6 @@ public class Transaction {
 		}
 		
 		return results;
-	}
-	
-	public boolean newTransaction() {
-		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,?,?,?)");
-			ps.setInt(1, id);
-			ps.setDate(2, (Date) purchaseDate);
-			ps.setInt(3,employeeId);
-			ps.setString(4, paymentType);	
-			return (ps.executeUpdate() == 1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("error insert newTransaction");
-			return false;
-		}
-		
 	}
 	
 	
