@@ -23,12 +23,9 @@ public class View_Product extends JFrame implements ActionListener{
 	private JButton buttonDelete;
 	private JButton buttonUpdate;
 	private JButton buttonSave;
-	private JFrame productFrame; 
-	private JLabel Id_Label;
-	private JLabel Name_Label;
-	private JLabel Desc_Label;
-	private JLabel Price_Label;
-	private JLabel Stock_Label;
+	private JFrame productFrame1;
+	private JFrame productFrame2;
+	private JFrame productFrame3;
 	private JPanel Add_Panel;
 	private JPanel Delete_Panel;
 	private JPanel Edit_Panel;
@@ -110,20 +107,20 @@ public class View_Product extends JFrame implements ActionListener{
 	
 	private void AddProduct() {
 		
-		productFrame = new JFrame();
+		productFrame1 = new JFrame();
 		
-		productFrame.setTitle("Add Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
+		productFrame1.setTitle("Add Product");
+		productFrame1.setSize(300, 600);
+		productFrame1.setLocationRelativeTo(null);
+		productFrame1.setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		Add_Panel = new JPanel(new GridLayout(2, 5));
-		Id_Label = new JLabel("Product ID: ");
-		Name_Label = new JLabel("Name: ");
-		Desc_Label = new JLabel("Description: ");
-		Price_Label = new JLabel("Price: ");
-		Stock_Label = new JLabel("Stock: ");
+		JLabel Id_Label = new JLabel("Product ID: ");
+		JLabel Name_Label = new JLabel("Name: ");
+		JLabel Desc_Label = new JLabel("Description: ");
+		JLabel Price_Label = new JLabel("Price: ");
+		JLabel Stock_Label = new JLabel("Stock: ");
 		Id_field = new JTextField();
 		Name_field = new JTextField();
 		Desc_field = new JTextField();
@@ -150,21 +147,20 @@ public class View_Product extends JFrame implements ActionListener{
 		buttonSave = new JButton("Add");
 		add(buttonSave, BorderLayout.SOUTH);
 		
-		productFrame.setVisible(true);
 	}
 	
 	private void DeleteProduct() {
-		productFrame = new JFrame();
+		productFrame2 = new JFrame();
 		
-		productFrame.setTitle("Delete Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
+		productFrame2.setTitle("Delete Product");
+		productFrame2.setSize(300, 600);
+		productFrame2.setLocationRelativeTo(null);
+		productFrame2.setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		Delete_Panel = new JPanel(new GridLayout(2, 1));
 		
-		Id_Label = new JLabel("Product ID: ");
+		JLabel Id_Label = new JLabel("Product ID: ");
 		Id_field = new JTextField();
 		
 		Delete_Panel.add(Id_Label);
@@ -175,25 +171,24 @@ public class View_Product extends JFrame implements ActionListener{
 		buttonDelete = new JButton("Delete");
 		add(buttonDelete, BorderLayout.SOUTH);
 		
-		productFrame.setVisible(true);
 		
 	}
 	
 	private void UpdateProduct() {
-		productFrame = new JFrame();
+		productFrame3 = new JFrame();
 
-		productFrame.setTitle("Edit Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
+		productFrame3.setTitle("Edit Product");
+		productFrame3.setSize(300, 600);
+		productFrame3.setLocationRelativeTo(null);
+		productFrame3.setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		Edit_Panel = new JPanel(new GridLayout(2, 5));
-		Id_Label = new JLabel("Product ID: ");
-		Name_Label = new JLabel("Name: ");
-		Desc_Label = new JLabel("Description: ");
-		Price_Label = new JLabel("Price: ");
-		Stock_Label = new JLabel("Stock: ");
+		JLabel Id_Label = new JLabel("Product ID: ");
+		JLabel Name_Label = new JLabel("Name: ");
+		JLabel Desc_Label = new JLabel("Description: ");
+		JLabel Price_Label = new JLabel("Price: ");
+		JLabel Stock_Label = new JLabel("Stock: ");
 		Id_field = new JTextField();
 		Name_field = new JTextField();
 		Desc_field = new JTextField();
@@ -220,7 +215,7 @@ public class View_Product extends JFrame implements ActionListener{
 		buttonSave = new JButton("Save");
 		add(buttonSave, BorderLayout.SOUTH);
 		
-		productFrame.setVisible(true);
+		
 		
 	}
 	
@@ -230,10 +225,13 @@ public class View_Product extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
 			AddProduct();
+			productFrame1.setVisible(true);
 		} else if (e.getSource() == buttonDelete) {
 			DeleteProduct();
+			productFrame2.setVisible(true);
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
+			productFrame3.setVisible(true);
 		}
 		
 	}
