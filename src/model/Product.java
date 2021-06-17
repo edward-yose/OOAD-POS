@@ -154,7 +154,7 @@ public class Product {
 				int qtytemp;
 				productidtemp=rs.getInt("productid");
 				qtytemp=rs.getInt("quantity");
-				PreparedStatement ps = Connect.connect().prepareStatement("update product set stock=stock-? where productid=?");
+				PreparedStatement ps = Connect.connect().prepareStatement("update product set stock=stock-? where id=?");
 				ps.setInt(1,qtytemp);
 				ps.setInt(2, productidtemp);
 				ps.executeUpdate();
