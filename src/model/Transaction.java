@@ -77,7 +77,7 @@ public class Transaction {
 	
 	public boolean pushTransaction() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,curdate(),?,?)");;
+			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,curdate(),?,?)");
 			ps.setInt(1, 0);
 			ps.setInt(2, employeeId);
 			ps.setString(3, paymentType);
@@ -90,6 +90,7 @@ public class Transaction {
 		}
 		
 	}
+	
 	
 	
 	public Integer getId() {
