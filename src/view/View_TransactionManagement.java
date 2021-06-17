@@ -4,6 +4,7 @@ import model.Cart;
 import model.Employee;
 import model.Product;
 import controller.CartController;
+import controller.ProductM_Controller;
 import controller.TransactionController;
 import controller.TransactionItemController;
 
@@ -180,6 +181,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		}
 		String error = TransactionController.pushTransaction(Employee.idNow,payMethod);
 		error=TransactionItemController.pushTransactionItem();
+		error=ProductM_Controller.updateStock();
 		if(error == null) {
 			refreshData();
 		}else {
