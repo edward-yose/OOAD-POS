@@ -71,7 +71,7 @@ public class Cart {
 		}	
 	}
 	
-	public boolean deleteAll() {
+	public static boolean deleteAll() {
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement("DELETE from cartitem");
 			return ps.executeUpdate() ==1;

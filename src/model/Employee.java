@@ -11,7 +11,9 @@ import java.util.Vector;
 import connect.Connect;
 
 public class Employee {
-
+	
+	
+	public static int idNow;
 	private Integer id;
 	private Integer roleID;
 	private String name;
@@ -25,6 +27,7 @@ public class Employee {
 	
 	public Employee(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
 		this.id = id;
+		this.idNow=id;
 		this.roleID = roleID;
 		this.name = name;
 		this.username = username;		

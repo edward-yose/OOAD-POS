@@ -19,7 +19,7 @@ public class Transaction {
 
 	public Transaction(int id, Date purchaseDate, int employeeId, String paymentType) {
 		this.id = id;
-		this.purchaseDate = purchaseDate;
+		this.purchaseDate=purchaseDate;
 		this.employeeId = employeeId;
 		this.paymentType = paymentType;
 	}
@@ -77,11 +77,10 @@ public class Transaction {
 	
 	public boolean pushTransaction() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,?,?,?)");
+			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,curdate(),?,?)");;
 			ps.setInt(1, 0);
-			ps.setDate(2, (java.sql.Date) purchaseDate);
-			ps.setInt(3, employeeId);
-			ps.setString(4, paymentType);
+			ps.setInt(2, employeeId);
+			ps.setString(3, paymentType);
 			return (ps.executeUpdate() == 1);
 
 		} catch (SQLException e) {

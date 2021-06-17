@@ -78,6 +78,11 @@ public class CartController {
 	}
 
 
+	public static void setGrandTotal(int grandTotal) {
+		CartController.grandTotal = grandTotal;
+	}
+
+
 	public static int getGrandTotal() {
 		return grandTotal;
 	}
