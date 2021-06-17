@@ -14,7 +14,6 @@ public class TransactionItemController {
 	private int transactionid;
 	private int productID;
 	private int quantity;
-	private Vector <Cart> cartItem = Cart.view();
 	
 	
 	
