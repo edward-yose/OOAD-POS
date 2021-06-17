@@ -102,6 +102,101 @@ public class Employee {
 		return results.get(0);
 	}
 	
+	
+	public static Vector<Employee> AddEmployee(Integer roleID, String name, String username, Integer salary, String password ) {
+		Vector<Employee> results = new Vector<Employee>();
+		String query = "INSERT INTO employee VALUES(SELECT COUNT(*) FROM employee, ?, ?, ?, ?, 'active', ?)";
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setInt(1, roleID);
+			ps.setString(2, name);
+			ps.setString(3, username);
+			ps.setInt(4, salary);
+			ps.setString(5, password);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new Employee(
+//					results.size(), // ini harusnya +1 tapi bingung nambahinnya wkkwkwk
+						rs.getInt("id"),
+						rs.getInt("roleID"),
+						rs.getString("name"),
+						rs.getString("username"),
+						rs.getInt("salary"),
+						rs.getString("status"),
+						rs.getString("password")
+					));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	public static Vector<Employee> EditEmployee(Integer id, Integer roleID, String name, String username, Integer salary, String password ) {
+		Vector<Employee> results = new Vector<Employee>();
+		String query = "UPDATE employee SET roleID = ?, name = ? ,  username = ? salary = ?, password = ? while id = ?";
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setInt(1, roleID);
+			ps.setString(2, name);
+			ps.setString(3, username);
+			ps.setInt(4, salary);
+			ps.setString(5, password);
+			ps.setInt(6,  id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new Employee(
+						results.size(), // ini harusnya +1 tapi bingung nambahinnya wkkwkwk
+						rs.getInt("roleID"),
+						rs.getString("name"),
+						rs.getString("username"),
+						rs.getInt("salary"),
+						rs.getString("status"),
+						rs.getString("password")
+					));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	public static Vector<Employee> DeleteEmployee(Integer id, String status ) {
+		Vector<Employee> results = new Vector<Employee>();
+		String query = "UPDATE employee SET status = 'Not Active' while id = ?";
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setInt(1,  id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new Employee(
+						rs.getInt("id"),
+						rs.getInt("roleID"),
+						rs.getString("name"),
+						rs.getString("username"),
+						rs.getInt("salary"),
+						rs.getString("status"),
+						rs.getString("password")
+					));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
