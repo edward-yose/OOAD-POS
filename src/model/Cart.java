@@ -87,6 +87,7 @@ public class Cart {
 			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * from cartitem where productid=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
+			rs.next();
 			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();

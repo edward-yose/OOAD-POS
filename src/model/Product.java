@@ -108,12 +108,7 @@ public class Product {
 			PreparedStatement ps = Connect.connect().prepareStatement("Select * FROM product WHERE id=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
-			if(rs.wasNull()) {
-				return false;
-			}
-			else {
-				return true;
-			}
+			return rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -125,11 +120,13 @@ public class Product {
 			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * FROM product WHERE id=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
+			rs.next();
 			return rs.getInt(5);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 1000;
+			return 0;
 		}
+
 	}
 	
 	public Integer getId() {
