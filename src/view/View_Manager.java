@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import view.View_HRD;
 import controller.TransactionController;
 import model.Transaction;
 import model.TransactionItem;
@@ -141,7 +143,8 @@ public class View_Manager extends JFrame implements ActionListener {
 		
 		// JTabbedPane
 		JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.addTab("Transaction Report", panelTransactionReport);
+		tabbedPane.addTab("Transaction Report", panelTransactionReport);		
+		tabbedPane.addTab("Employee Management", new View_HRD().getContentPane());
 		
 		add(tabbedPane);
 		
