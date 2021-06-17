@@ -1,10 +1,12 @@
 package model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import connect.Connect;
 
@@ -49,6 +51,34 @@ public class Employee {
 			e.printStackTrace();
 		}
 		return EmployeeList;
+	}
+	
+	public static Vector<Employee> getEmployee(int id) {
+		Vector<Employee> results = new Vector<Employee>();
+		String query = "SELECT * FROM Employee WHERE id = ? ";	
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new Employee(
+						rs.getInt("id"),
+						rs.getInt("roleID"),
+						rs.getString("name"),
+						rs.getString("username"),
+						rs.getInt("salary"),
+						rs.getString("status"),
+						rs.getString("password")
+					));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
 	}
 	
 	public Integer getId() {

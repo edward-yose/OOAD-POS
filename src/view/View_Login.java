@@ -133,8 +133,8 @@ public class View_Login extends JFrame implements ActionListener {
 //		}
 		
 		else if (e.getSource() == buttonLogin){
-			dispose();
-			// TO-DO LOGIN STUFF			
+			// TO-DO LOGIN STUFF
+			
 		}
 	}
 }

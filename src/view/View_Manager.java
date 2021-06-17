@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -46,26 +48,32 @@ public class View_Manager extends JFrame implements ActionListener {
 	
 	private void initLayout() {
 		// JFrame
-		setTitle("Transaction Report View");
+		setTitle("Manager View");
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// JPanel
+		// JPanel contentPane
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		contentPane.setLayout(new GridLayout(1, 1));
 		setContentPane(contentPane);
-
+		
+		
+		
+		// JPanel TransactionReport
+		JPanel panelTransactionReport = new JPanel();
+		panelTransactionReport.setLayout(new GridLayout(2, 1, 10, 10));
+		
 		// JScrollPane
 		JScrollPane scrollPane = new JScrollPane();
 		
-		// JTable
+		// JTable table
 		table = new JTable();
 		table.setDefaultEditor(Object.class, null);
 
 		scrollPane.setViewportView(table);
-		add(scrollPane);
+		panelTransactionReport.add(scrollPane);
 		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
@@ -91,18 +99,13 @@ public class View_Manager extends JFrame implements ActionListener {
 		
 		// JComboBox Month
 		DefaultComboBoxModel<String> boxMonth = new DefaultComboBoxModel<String>();
-		boxMonth.addElement("January");
-		boxMonth.addElement("February");
-		boxMonth.addElement("March");
-		boxMonth.addElement("April");
-		boxMonth.addElement("May");
-		boxMonth.addElement("June");
-		boxMonth.addElement("July");
-		boxMonth.addElement("August");
-		boxMonth.addElement("September");
-		boxMonth.addElement("October");
-		boxMonth.addElement("November");
-		boxMonth.addElement("December");
+		
+		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+		for(String i : months) {
+			boxMonth.addElement(i);
+		}
+		
 		comboBoxMonth = new JComboBox<>(boxMonth);
 		panelRange.add(comboBoxMonth);
 				
@@ -126,12 +129,21 @@ public class View_Manager extends JFrame implements ActionListener {
 		panelButtons.add(buttonQuery);
 		
 		panelControl.add(panelRange);
-		panelControl.add(panelButtons);
+		panelControl.add(panelButtons);		
+		
+		panelTransactionReport.add(panelControl);
 		
 		
 		
-		add(panelControl);
+		// JPanel employeeControl
 		
+		
+		
+		// JTabbedPane
+		JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane.addTab("Transaction Report", panelTransactionReport);
+		
+		add(tabbedPane);
 		
 		setVisible(true);
 	}
