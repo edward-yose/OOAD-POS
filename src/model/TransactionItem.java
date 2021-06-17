@@ -40,6 +40,30 @@ public class TransactionItem {
 		}
 		return false;
 	}
+	
+ 	public static Vector<TransactionItem> getTransactionItem(int transactionId) {
+		Vector<TransactionItem> results = new Vector<TransactionItem>();
+		String query = "SELECT * FROM TransactionItem WHERE TransactionId = ? ";	
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setInt(1, transactionId);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new TransactionItem(
+						rs.getInt("transactionID"),
+						rs.getInt("productID"),
+						rs.getInt("quantity")
+					));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
 
 	public int getTransactionid() {
 		return transactionid;
