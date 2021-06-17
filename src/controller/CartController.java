@@ -27,6 +27,7 @@ public class CartController {
 		if(Product.stockCheck(productid)<qty)
 		{
 			return "Insufficient stock";
+<<<<<<< Updated upstream
 		}
 		if(Cart.exist(productid)==false) {
 			Cart i = new Cart(productid, qty);
@@ -50,6 +51,23 @@ public class CartController {
 					return null;
 				}
 		}
+=======
+		}
+		
+		Cart i = new Cart(0, qty);
+		boolean isSuccess = i.insert();
+		
+		if(isSuccess == false) {
+		return "Insert Failed";
+		}
+		else {
+			return null;
+		}
+			
+		
+
+		
+>>>>>>> Stashed changes
 	}
 
 	
