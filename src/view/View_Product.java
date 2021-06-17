@@ -30,6 +30,8 @@ public class View_Product extends JFrame implements ActionListener{
 	private JLabel Price_Label;
 	private JLabel Stock_Label;
 	private JPanel Add_Panel;
+	private JPanel Delete_Panel;
+	private JPanel Edit_Panel;
 	private JTextField Name_field;
 	private JTextField Desc_field;
 	private JTextField Id_field;
@@ -160,13 +162,15 @@ public class View_Product extends JFrame implements ActionListener{
 		productFrame.setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
-		Add_Panel = new JPanel(new GridLayout(2, 1));
+		Delete_Panel = new JPanel(new GridLayout(2, 1));
 		
 		Id_Label = new JLabel("Product ID: ");
 		Id_field = new JTextField();
 		
-		Add_Panel.add(Id_Label);
-		Add_Panel.add(Id_field);
+		Delete_Panel.add(Id_Label);
+		Delete_Panel.add(Id_field);
+		
+		add(Delete_Panel, BorderLayout.CENTER);
 		
 		buttonDelete = new JButton("Delete");
 		add(buttonDelete, BorderLayout.SOUTH);
@@ -184,7 +188,7 @@ public class View_Product extends JFrame implements ActionListener{
 		productFrame.setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
-		Add_Panel = new JPanel(new GridLayout(2, 5));
+		Edit_Panel = new JPanel(new GridLayout(2, 5));
 		Id_Label = new JLabel("Product ID: ");
 		Name_Label = new JLabel("Name: ");
 		Desc_Label = new JLabel("Description: ");
@@ -196,22 +200,22 @@ public class View_Product extends JFrame implements ActionListener{
 		Price_field = new JTextField();
 		Stock_field = new JTextField();
 		
-		Add_Panel.add(Id_Label);
-		Add_Panel.add(Id_field);
+		Edit_Panel.add(Id_Label);
+		Edit_Panel.add(Id_field);
 		
-		Add_Panel.add(Name_Label);
-		Add_Panel.add(Name_field);
+		Edit_Panel.add(Name_Label);
+		Edit_Panel.add(Name_field);
 		
-		Add_Panel.add(Desc_Label);
-		Add_Panel.add(Desc_field);
+		Edit_Panel.add(Desc_Label);
+		Edit_Panel.add(Desc_field);
 		
-		Add_Panel.add(Price_Label);
-		Add_Panel.add(Price_field);
+		Edit_Panel.add(Price_Label);
+		Edit_Panel.add(Price_field);
 		
-		Add_Panel.add(Stock_Label);
-		Add_Panel.add(Stock_field);
+		Edit_Panel.add(Stock_Label);
+		Edit_Panel.add(Stock_field);
 		
-		add(Add_Panel, BorderLayout.CENTER);
+		add(Edit_Panel, BorderLayout.CENTER);
 		
 		buttonSave = new JButton("Save");
 		add(buttonSave, BorderLayout.SOUTH);
