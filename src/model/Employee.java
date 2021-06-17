@@ -22,9 +22,6 @@ public class Employee {
 	
 	private Connect connect;
 	
-	public Employee() {
-		
-	}
 	
 	public Employee(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
 		this.id = id;
@@ -36,22 +33,8 @@ public class Employee {
 		this.password = password;
 	}
 	
-	public static List<Employee> getAllEmployee(){
-		List<Employee> EmployeeList = new ArrayList<Employee>();
+	public Employee() {
 		
-		try {
-			Statement st = Connect.connect().createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM employee");
-			
-			while (rs.next()) {
-				Employee employee = new Employee(rs.getInt("id"), rs.getInt("roleID"), rs.getString("name"), rs.getString("username"), rs.getInt("salary"), rs.getString("status"), rs.getString("password"));
-				EmployeeList.add(employee);
-			}
-		} catch (SQLException e) {
-			System.out.println("ERROR");
-			e.printStackTrace();
-		}
-		return EmployeeList;
 	}
 	
 	public static Vector<Employee> getEmployee(int id) {
