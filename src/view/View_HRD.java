@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class View_HRD extends JFrame implements ActionListener{
@@ -25,6 +24,9 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JButton add_user;
 	private JButton edit_user;
 	private JButton delete_user;
+	private JFrame Add;
+	private JFrame Edit;
+	private JFrame Delete;
 	
 	public View_HRD() {
 		initLayout();
@@ -90,5 +92,164 @@ public class View_HRD extends JFrame implements ActionListener{
 			table.setModel(utm);
 	}
 	
+private void AddUser() {
+		
+		Add = new JFrame();
+		
+		Add.setTitle("Add User");
+		Add.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Add.setBounds(200, 200, 400, 300);
+		
+		Container Cont = Add.getContentPane();
+		Cont.setLayout(null);
+		
+		JLabel Title = new JLabel("Add User");
+		Title.setBounds(120, 5, 200, 30);
+		
+		JLabel RoleLabel = new JLabel("Role ID: ");
+		RoleLabel.setBounds(20, 60, 200, 30);
+		
+		JLabel NameLabel = new JLabel("Name: ");
+		NameLabel.setBounds(20, 90, 200, 30);
+		
+		JLabel UsernameLabel = new JLabel("Username: ");
+		UsernameLabel.setBounds(20, 120, 200, 30);
+		
+		JLabel SalaryLabel = new JLabel("salary: ");
+		SalaryLabel.setBounds(20, 150, 200, 30);
+		
+		JTextField RoleField = new JTextField();
+		RoleField.setBounds(100, 60, 200, 30);
+		
+		JTextField NameField = new JTextField();
+		NameField.setBounds(100, 90, 200, 30);
+		
+		JTextField UsernameField = new JTextField();
+		UsernameField.setBounds(100, 120, 200, 30);
+		
+		JTextField SalaryField = new JTextField();
+		SalaryField.setBounds(100, 150, 200, 30);
+
+		JButton AddBtn = new JButton("Add");
+		AddBtn.setBounds(150, 200, 100, 30);
+		
+		Cont.add(Title);
+		Cont.add(RoleLabel);
+		Cont.add(NameLabel);
+		Cont.add(UsernameLabel);
+		Cont.add(SalaryLabel);
+		Cont.add(RoleField);
+		Cont.add(NameField);
+		Cont.add(UsernameField);
+		Cont.add(SalaryField);
+		Cont.add(AddBtn);
+		
+	}
+private void EditUser() {
+	
+	Edit = new JFrame();
+	
+	Edit.setTitle("Add User");
+	Edit.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+	Edit.setBounds(200, 200, 400, 300);
+	
+	Container Cont = Edit.getContentPane();
+	Cont.setLayout(null);
+	
+	JLabel Title = new JLabel("Update User");
+	Title.setBounds(120, 5, 200, 30);
+	
+	JLabel IDLabel = new JLabel("ID: ");
+	IDLabel.setBounds(20, 30, 200, 30);
+	
+	JLabel RoleLabel = new JLabel("Role ID: ");
+	RoleLabel.setBounds(20, 60, 200, 30);
+	
+	JLabel NameLabel = new JLabel("Name: ");
+	NameLabel.setBounds(20, 90, 200, 30);
+	
+	JLabel UsernameLabel = new JLabel("Username: ");
+	UsernameLabel.setBounds(20, 120, 200, 30);
+	
+	JLabel SalaryLabel = new JLabel("salary: ");
+	SalaryLabel.setBounds(20, 150, 200, 30);
+	
+	JTextField IDField = new JTextField();
+	IDField.setBounds(100, 30, 200, 30);
+	
+	JTextField RoleField = new JTextField();
+	RoleField.setBounds(100, 60, 200, 30);
+	
+	JTextField NameField = new JTextField();
+	NameField.setBounds(100, 90, 200, 30);
+	
+	JTextField UsernameField = new JTextField();
+	UsernameField.setBounds(100, 120, 200, 30);
+	
+	JTextField SalaryField = new JTextField();
+	SalaryField.setBounds(100, 150, 200, 30);
+
+	JButton EditBtn = new JButton("Update");
+	EditBtn.setBounds(150, 200, 100, 30);
+	
+	Cont.add(Title);
+	Cont.add(IDLabel);
+	Cont.add(RoleLabel);
+	Cont.add(NameLabel);
+	Cont.add(UsernameLabel);
+	Cont.add(SalaryLabel);
+	Cont.add(IDField);
+	Cont.add(RoleField);
+	Cont.add(NameField);
+	Cont.add(UsernameField);
+	Cont.add(SalaryField);
+	Cont.add(EditBtn);
+	
+}
+
+private void DeleteUser() {
+	
+	Delete = new JFrame();
+	
+	Delete.setTitle("Delete User");
+	Delete.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+	Delete.setBounds(200, 200, 400, 300);
+	
+	Container Cont = Delete.getContentPane();
+	Cont.setLayout(null);
+	
+	JLabel Title = new JLabel("Delete User");
+	Title.setBounds(120, 5, 200, 30);
+	
+	JLabel IDLabel = new JLabel("ID: ");
+	IDLabel.setBounds(20, 30, 200, 30);
+	
+	JTextField IDField = new JTextField();
+	IDField.setBounds(100, 30, 200, 30);
+
+	JButton DelBtn = new JButton("Delete");
+	DelBtn.setBounds(150, 100, 100, 30);
+	
+	Cont.add(Title);
+	Cont.add(IDLabel);
+	Cont.add(IDField);
+	Cont.add(DelBtn);
+	
+}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == add_user) {
+			AddUser();
+			Add.setVisible(true);
+		} else if (e.getSource() == edit_user) {
+			EditUser();
+			Edit.setVisible(true);
+		} else if (e.getSource() == delete_user) {
+			DeleteUser();
+			Delete.setVisible(true);
+		}
+		
+	}
 	
 }
