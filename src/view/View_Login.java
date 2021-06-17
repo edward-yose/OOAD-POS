@@ -8,12 +8,12 @@ import controller.EmployeeController;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +24,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class View_Login extends JFrame implements ActionListener {
+public class View_Login extends JFrame implements ActionListener, KeyListener {
 	
 	private JButton buttonViewHRD;
 	private JButton buttonViewManager;
@@ -86,6 +86,7 @@ public class View_Login extends JFrame implements ActionListener {
 		// JTextField Username
 		fieldUsername = new JTextField();
 		fieldUsername.setPreferredSize(new Dimension(100, 20));
+		fieldUsername.addKeyListener(this);
 		panelLogin.add(fieldUsername);
 		
 		// JLabel Password
@@ -96,6 +97,7 @@ public class View_Login extends JFrame implements ActionListener {
 		// JTextField Password
 		fieldPassword = new JPasswordField();
 		fieldPassword.setPreferredSize(new Dimension(100, 20));
+		fieldPassword.addKeyListener(this);
 		panelLogin.add(fieldPassword);
 		
 		// JButton Login
@@ -114,6 +116,7 @@ public class View_Login extends JFrame implements ActionListener {
 	
 	private void loginEmployee() {
 		String username = fieldUsername.getText();
+		@SuppressWarnings("deprecation")
 		String password = fieldPassword.getText();
 				
 		System.out.println(EmployeeController.logEmployeeIn(username, password));
@@ -180,5 +183,23 @@ public class View_Login extends JFrame implements ActionListener {
 			// TO-DO LOGIN STUFF
 			loginEmployee();
 		}
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			loginEmployee();
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
