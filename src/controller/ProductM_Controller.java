@@ -18,7 +18,7 @@ public class ProductM_Controller {
 		
 		
 		
-		return addProduct;
+		return 0;
 		
 	}
 	
