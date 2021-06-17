@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -54,9 +55,6 @@ public class View_HRD extends JFrame implements ActionListener{
 		JPanel panelCtrl = new JPanel();
 		panelCtrl.setLayout(new GridLayout(1, 2, 10, 10));
 		
-		JPanel panelP = new JPanel();
-		panelP.setLayout(new GridLayout(3,2));
-		
 		// JPanel Buttons
 		JPanel panelButtons = new JPanel();
 		panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
@@ -76,7 +74,6 @@ public class View_HRD extends JFrame implements ActionListener{
 		delete_user.addActionListener(this);
 		panelButtons.add(delete_user);
 		
-		panelCtrl.add(panelP);
 		panelCtrl.add(panelButtons);
 		
 		add(panelCtrl);
@@ -107,28 +104,34 @@ private void AddUser() {
 		Title.setBounds(120, 5, 200, 30);
 		
 		JLabel RoleLabel = new JLabel("Role ID: ");
-		RoleLabel.setBounds(20, 60, 200, 30);
+		RoleLabel.setBounds(20, 30, 200, 30);
 		
 		JLabel NameLabel = new JLabel("Name: ");
-		NameLabel.setBounds(20, 90, 200, 30);
+		NameLabel.setBounds(20, 60, 200, 30);
 		
 		JLabel UsernameLabel = new JLabel("Username: ");
-		UsernameLabel.setBounds(20, 120, 200, 30);
+		UsernameLabel.setBounds(20, 90, 200, 30);
 		
 		JLabel SalaryLabel = new JLabel("salary: ");
-		SalaryLabel.setBounds(20, 150, 200, 30);
+		SalaryLabel.setBounds(20, 120, 200, 30);
+		
+		JLabel PasswordLabel = new JLabel("Password: ");
+		PasswordLabel.setBounds(20, 150, 200, 30);
 		
 		JTextField RoleField = new JTextField();
-		RoleField.setBounds(100, 60, 200, 30);
+		RoleField.setBounds(100, 30, 200, 30);
 		
 		JTextField NameField = new JTextField();
-		NameField.setBounds(100, 90, 200, 30);
+		NameField.setBounds(100, 60, 200, 30);
 		
 		JTextField UsernameField = new JTextField();
-		UsernameField.setBounds(100, 120, 200, 30);
+		UsernameField.setBounds(100, 90, 200, 30);
 		
 		JTextField SalaryField = new JTextField();
-		SalaryField.setBounds(100, 150, 200, 30);
+		SalaryField.setBounds(100, 120, 200, 30);
+		
+		JTextField PasswordField = new JPasswordField();
+		PasswordField.setBounds(100, 150, 200, 30);
 
 		JButton AddBtn = new JButton("Add");
 		AddBtn.setBounds(150, 200, 100, 30);
@@ -138,11 +141,13 @@ private void AddUser() {
 		Cont.add(NameLabel);
 		Cont.add(UsernameLabel);
 		Cont.add(SalaryLabel);
+		Cont.add(PasswordLabel);
 		Cont.add(RoleField);
 		Cont.add(NameField);
 		Cont.add(UsernameField);
 		Cont.add(SalaryField);
 		Cont.add(AddBtn);
+		Cont.add(PasswordField);
 		
 	}
 private void EditUser() {
@@ -174,6 +179,9 @@ private void EditUser() {
 	JLabel SalaryLabel = new JLabel("salary: ");
 	SalaryLabel.setBounds(20, 150, 200, 30);
 	
+	JLabel PasswordLabel = new JLabel("Password: ");
+	PasswordLabel.setBounds(20, 180, 200, 30);
+	
 	JTextField IDField = new JTextField();
 	IDField.setBounds(100, 30, 200, 30);
 	
@@ -188,6 +196,9 @@ private void EditUser() {
 	
 	JTextField SalaryField = new JTextField();
 	SalaryField.setBounds(100, 150, 200, 30);
+	
+	JTextField PasswordField = new JPasswordField();
+	PasswordField.setBounds(100, 180, 200, 30);
 
 	JButton EditBtn = new JButton("Update");
 	EditBtn.setBounds(150, 200, 100, 30);
@@ -198,11 +209,13 @@ private void EditUser() {
 	Cont.add(NameLabel);
 	Cont.add(UsernameLabel);
 	Cont.add(SalaryLabel);
+	Cont.add(PasswordLabel);
 	Cont.add(IDField);
 	Cont.add(RoleField);
 	Cont.add(NameField);
 	Cont.add(UsernameField);
 	Cont.add(SalaryField);
+	Cont.add(PasswordField);
 	Cont.add(EditBtn);
 	
 }
