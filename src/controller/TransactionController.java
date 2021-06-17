@@ -29,7 +29,6 @@ public class TransactionController {
 			return "Insert Failed";
 			}
 			else {
-				model.Cart.deleteAll();
 				controller.CartController.setGrandTotal(0);
 				return null;
 			}

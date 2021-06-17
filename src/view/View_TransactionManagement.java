@@ -5,6 +5,7 @@ import model.Employee;
 import model.Product;
 import controller.CartController;
 import controller.TransactionController;
+import controller.TransactionItemController;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -164,7 +165,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 }
 	
 	private void checkout() {
-		Object[]opt= {"Cash", "Credit Card"};
+		Object[]opt= {"Cash", "Credit Card","Cancel"};
 		String payMethod = null;
 		int opsi=JOptionPane.showOptionDialog(this, "Choose the payment method","Payment Method",
 				JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,
@@ -178,6 +179,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			payMethod = "CREDIT CARD";
 		}
 		String error = TransactionController.pushTransaction(Employee.idNow,payMethod);
+		error=TransactionItemController.pushTransactionItem();
 		if(error == null) {
 			refreshData();
 		}else {
