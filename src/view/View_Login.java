@@ -4,6 +4,8 @@ import view.View_HRD;
 import view.View_Manager;
 import view.View_TransactionManagement;
 
+import controller.EmployeeController;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -16,6 +18,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -108,6 +111,47 @@ public class View_Login extends JFrame implements ActionListener {
 		fieldUsername.requestFocusInWindow();
 		
 	}
+	
+	private void loginEmployee() {
+		String username = fieldUsername.getText();
+		String password = fieldPassword.getText();
+				
+		System.out.println(EmployeeController.logEmployeeIn(username, password));
+		
+		switch(EmployeeController.logEmployeeIn(username, password)) {
+			case 1: {
+				dispose();
+				new View_Manager();
+				break;
+			}
+			case 2: {
+				dispose();
+				new View_Product();
+				break;
+			}
+			case 3: {
+				dispose();
+				new View_HRD();
+				break;
+			}
+			case 4: {
+				dispose();
+				new View_TransactionManagement();
+				break;
+			}
+			
+			case -1: {
+				JOptionPane.showMessageDialog(null, "Invalid username or password.");
+				break;
+			}
+			
+			case -2: {
+				JOptionPane.showMessageDialog(null, "Fields cannot be empty.");
+				break;
+			}
+		}
+				
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -134,7 +178,7 @@ public class View_Login extends JFrame implements ActionListener {
 		
 		else if (e.getSource() == buttonLogin){
 			// TO-DO LOGIN STUFF
-			
+			loginEmployee();
 		}
 	}
 }
