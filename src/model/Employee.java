@@ -27,7 +27,7 @@ public class Employee {
 		this.id = id;
 		this.roleID = roleID;
 		this.name = name;
-		this.username = username;
+		this.username = username;		
 		this.salary = salary;
 		this.status = status;
 		this.password = password;
@@ -37,7 +37,7 @@ public class Employee {
 		
 	}
 	
-	public static Vector<Employee> getEmployee(int id) {
+	public static Employee getEmployee(int id) {
 		Vector<Employee> results = new Vector<Employee>();
 		String query = "SELECT * FROM Employee WHERE id = ? ";	
 		
@@ -62,10 +62,10 @@ public class Employee {
 			e.printStackTrace();
 		}
 		
-		return results;
+		return results.get(0);
 	}
 	
-	public static Vector<Employee> getEmployeeByUsername(String username) {
+	public static Employee getEmployeeByUsername(String username) {
 		Vector<Employee> results = new Vector<Employee>();
 		String query = "SELECT * FROM Employee WHERE username = ? ";	
 		
@@ -96,7 +96,7 @@ public class Employee {
 			e.printStackTrace();
 		}
 		
-		return results;
+		return results.get(0);
 	}
 	
 	public Integer getId() {

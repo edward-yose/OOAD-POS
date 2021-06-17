@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.Vector;
-
 import model.Employee;
 
 public class EmployeeController {
@@ -10,7 +8,7 @@ public class EmployeeController {
 		// TO-DO Login validation
 		
 		Employee user = new Employee();
-		user = Employee.getEmployeeByUsername(username).get(0);
+		user = Employee.getEmployeeByUsername(username);
 		
 //		System.out.println("Name is: " + user.getName());
 //		System.out.println("Password is: " + user.getPassword() + ". Entered password is: " + password);
