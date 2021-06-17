@@ -48,7 +48,7 @@ public class Cart {
 	
 	public boolean update() {
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("update cartitem set quantity=? where productid=?");
+			PreparedStatement ps = Connect.connect().prepareStatement("update cartitem set quantity=quantity+? where productid=?");
 			ps.setInt(1, qty);
 			ps.setInt(2, productid);
 			return ps.executeUpdate() ==1;
@@ -82,16 +82,15 @@ public class Cart {
 		}	
 	}
 	
-	public int select() {
+	public static boolean exist(int productid) {
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * from cartitem where productid=?");
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
-			rs.next();
-			return rs.getInt(1);
+			return rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 0;
+			return false;
 		}
 	}
 	

@@ -10,6 +10,8 @@ import model.Product;
 
 
 public class CartController {
+	
+	private static int grandTotal=0;
 
 	public static String addItem(int productid, int qty) {
 		if(productid==0) {
@@ -26,19 +28,30 @@ public class CartController {
 		{
 			return "Insufficient stock";
 		}
-		
-		Cart i = new Cart(productid, qty);
-		boolean isSuccess = i.insert();
-		
-		if(isSuccess == false) {
-		return "Insert Failed";
+		if(Cart.exist(productid)==false) {
+			Cart i = new Cart(productid, qty);
+			boolean isSuccess = i.insert();
+			if(isSuccess == false) {
+				return "Insert Failed";
+				}
+				else {
+					grandTotal+=Product.getPrice(productid);
+					return null;
+				}
 		}
 		else {
-			return null;
+			Cart i = new Cart(productid, qty);
+			boolean isSuccess = i.update();
+			if(isSuccess == false) {
+				return "Adding Failed";
+				}
+				else {
+					grandTotal+=Product.getPrice(productid);
+					return null;
+				}
 		}
-			
-		
 	}
+
 	
 	public static String removeItem(int productid,int qty) {
 		if(productid==0) {
@@ -54,8 +67,16 @@ public class CartController {
 		if(isSuccess == false) {
 			return "remove Failed";
 		}
-		else return null;
+		else {
+			grandTotal-=Product.getPrice(productid);
+			return null;
+		}
 	}
-	
+
+
+	public static int getGrandTotal() {
+		return grandTotal;
+	}
+
 
 }

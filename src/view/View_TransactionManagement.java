@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 
 
 
@@ -22,6 +23,8 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	private JButton buttonAdd;
 	private JButton buttonRemove;
 	private JButton buttonCheckOut;
+	private JLabel totalprice=new JLabel(); 
+
 	
 	public View_TransactionManagement() {
 		initLayout();
@@ -80,6 +83,14 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		
 		panelCud.add(panelFields);
 		
+		// JLabel price
+		JLabel labeltotalprice = new JLabel("Total Price: ");
+		labeltotalprice.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelFields.add(labeltotalprice);
+		
+		totalprice.setHorizontalAlignment(SwingConstants.RIGHT);
+		panelFields.add(totalprice);
+
 		// JPanel Buttons
 		JPanel panelButtons = new JPanel();
 		panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
@@ -124,7 +135,8 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 					i.getQty()
 			});
 		}
-		
+		totalprice =  JLabel(String.valueOf(CartController.getGrandTotal()));
+	
 	}
 	private void add() {
 		int productid = (int)spinnerId.getValue();

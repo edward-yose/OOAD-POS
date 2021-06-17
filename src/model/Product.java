@@ -129,6 +129,21 @@ public class Product {
 
 	}
 	
+	public static int getPrice(int productid) {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * FROM product WHERE id=?");
+			ps.setInt(1, productid);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt(4);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}
