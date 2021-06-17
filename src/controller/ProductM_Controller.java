@@ -11,12 +11,12 @@ public class ProductM_Controller {
 		return Product.getAllProducts();
 	}
 	
-	public static String addProduct(int id, String name, String description, int price, int stock) {
+	public static int addProduct(Integer id, String name, String description, Integer price, Integer stock) {
 		
 		
 		
 		
-		return description;
+		return addProduct;
 		
 	}
 }
