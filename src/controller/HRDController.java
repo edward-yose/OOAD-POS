@@ -4,7 +4,7 @@ import model.Employee;
 import model.Role;
 
 public class HRDController {
-	public static int addEmployee (Integer id, String name, String username, Integer salary, String password) {
+	public static int addEmployee (Integer id, Integer roleID, String name, String username, Integer salary, String password) {
 		Employee user = new Employee();
 		user = Employee.getEmployee(id);
 		
