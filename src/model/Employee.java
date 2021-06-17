@@ -25,6 +25,7 @@ public class Employee {
 	public Employee() {
 		
 	}
+	
 	public Employee(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
 		this.id = id;
 		this.roleID = roleID;
@@ -73,6 +74,40 @@ public class Employee {
 						rs.getString("password")
 					));				
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	public static Vector<Employee> getEmployeeByUsername(String username) {
+		Vector<Employee> results = new Vector<Employee>();
+		String query = "SELECT * FROM Employee WHERE username = ? ";	
+		
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				results.add(new Employee(
+						rs.getInt("id"),
+						rs.getInt("roleID"),
+						rs.getString("name"),
+						rs.getString("username"),
+						rs.getInt("salary"),
+						rs.getString("status"),
+						rs.getString("password")
+					));				
+			}
+			
+			if(results.size() == 0) {
+				results.add(new Employee(0,null,null,null,null,null,null));
+			}
+
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

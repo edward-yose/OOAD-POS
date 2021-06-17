@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,19 +23,9 @@ public class View_Product extends JFrame implements ActionListener{
 	private JButton buttonAdd;
 	private JButton buttonDelete;
 	private JButton buttonUpdate;
-	private JButton buttonSave;
-	private JFrame productFrame; 
-	private JLabel Id_Label;
-	private JLabel Name_Label;
-	private JLabel Desc_Label;
-	private JLabel Price_Label;
-	private JLabel Stock_Label;
-	private JPanel Add_Panel;
-	private JTextField Name_field;
-	private JTextField Desc_field;
-	private JTextField Id_field;
-	private JTextField Price_field;
-	private JTextField Stock_field;
+	private JFrame Add;
+	private JFrame Delete;
+	private JFrame Update;
 	
 	public View_Product() {
 		initLayout();
@@ -108,108 +99,159 @@ public class View_Product extends JFrame implements ActionListener{
 	
 	private void AddProduct() {
 		
-		productFrame = new JFrame();
+		Add = new JFrame();
 		
-		productFrame.setTitle("Add Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Add.setTitle("Add Product");
+		Add.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Add.setBounds(200, 200, 400, 300);
 		
-		Add_Panel = new JPanel(new GridLayout(2, 5));
-		Id_Label = new JLabel("Product ID: ");
-		Name_Label = new JLabel("Name: ");
-		Desc_Label = new JLabel("Description: ");
-		Price_Label = new JLabel("Price: ");
-		Stock_Label = new JLabel("Stock: ");
-		Id_field = new JTextField();
-		Name_field = new JTextField();
-		Desc_field = new JTextField();
-		Price_field = new JTextField();
-		Stock_field = new JTextField();
+		Container Cont = Add.getContentPane();
+		Cont.setLayout(null);
 		
-		Add_Panel.add(Id_Label);
-		Add_Panel.add(Id_field);
+		JLabel Title = new JLabel("Add Product to Database");
+		Title.setBounds(120, 5, 200, 30);
 		
-		Add_Panel.add(Name_Label);
-		Add_Panel.add(Name_field);
+		JLabel Id_Label = new JLabel("Product ID: ");
+		Id_Label.setBounds(20, 30, 200, 30);
 		
-		Add_Panel.add(Desc_Label);
-		Add_Panel.add(Desc_field);
+		JLabel Name_Label = new JLabel("Name: ");
+		Name_Label.setBounds(20, 60, 200, 30);
 		
-		Add_Panel.add(Price_Label);
-		Add_Panel.add(Price_field);
+		JLabel Desc_Label = new JLabel("Description: ");
+		Desc_Label.setBounds(20, 90, 200, 30);
 		
-		Add_Panel.add(Stock_Label);
-		Add_Panel.add(Stock_field);
+		JLabel Price_Label = new JLabel("Price: ");
+		Price_Label.setBounds(20, 120, 200, 30);
 		
-		add(Add_Panel, BorderLayout.CENTER);
+		JLabel Stock_Label = new JLabel("Stock: ");
+		Stock_Label.setBounds(20, 150, 200, 30);
 		
-		buttonSave = new JButton("Add");
-		add(buttonSave, BorderLayout.SOUTH);
+		JTextField Id_Field = new JTextField();
+		Id_Field.setBounds(100, 30, 200, 30);
+		
+		JTextField Name_Field = new JTextField();
+		Name_Field.setBounds(100, 60, 200, 30);
+		
+		JTextField Desc_Field = new JTextField();
+		Desc_Field.setBounds(100, 90, 200, 30);
+		
+		JTextField Price_Field = new JTextField();
+		Price_Field.setBounds(100, 120, 200, 30);
+		
+		JTextField Stock_Field = new JTextField();
+		Stock_Field.setBounds(100, 150, 200, 30);
+
+		JButton AddBtn = new JButton("Add");
+		AddBtn.setBounds(150, 200, 100, 30);
+		
+		Cont.add(Title);
+		Cont.add(Id_Label);
+		Cont.add(Name_Label);
+		Cont.add(Desc_Label);
+		Cont.add(Price_Label);
+		Cont.add(Stock_Label);
+		Cont.add(Id_Field);
+		Cont.add(Name_Field);
+		Cont.add(Desc_Field);
+		Cont.add(Price_Field);
+		Cont.add(Stock_Field);
+		Cont.add(AddBtn);
+		
 	}
 	
+
+
 	private void DeleteProduct() {
-		productFrame = new JFrame();
+		Delete = new JFrame();
 		
-		productFrame.setTitle("Delete Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Delete.setTitle("Delete Product");
+		Delete.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Delete.setBounds(200, 200, 400, 200);
 		
-		Add_Panel = new JPanel(new GridLayout(2, 1));
+		Container Cont = Delete.getContentPane();
+		Cont.setLayout(null);
 		
-		Id_Label = new JLabel("Product ID: ");
-		Id_field = new JTextField();
+		JLabel Title = new JLabel("Delete Product from Database");
+		Title.setBounds(100, 5, 200, 30);
 		
-		Add_Panel.add(Id_Label);
-		Add_Panel.add(Id_field);
+		JLabel Id_Label = new JLabel("Product ID: ");
+		Id_Label.setBounds(20, 30, 200, 30);
 		
-		buttonDelete = new JButton("Delete");
-		add(buttonDelete, BorderLayout.SOUTH);
+		JTextField Id_Field = new JTextField();
+		Id_Field.setBounds(100, 30, 200, 30);
+		
+		JButton DelBtn = new JButton("Delete");
+		DelBtn.setBounds(120, 90, 100, 30);
+		
+		Cont.add(Title);
+		Cont.add(Id_Label);
+		Cont.add(Id_Field);
+		Cont.add(DelBtn);
+				
+		
 	}
 	
 	private void UpdateProduct() {
-		productFrame = new JFrame();
+		
+		Update = new JFrame();
+		
+		Update.setTitle("Add Product");
+		Update.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		Update.setBounds(200, 200, 400, 300);
+		
+		Container Cont = Update.getContentPane();
+		Cont.setLayout(null);
+		
+		JLabel Title = new JLabel("Update Product in Database");
+		Title.setBounds(120, 5, 200, 30);
+		
+		JLabel Id_Label = new JLabel("Product ID: ");
+		Id_Label.setBounds(20, 30, 200, 30);
+		
+		JLabel Name_Label = new JLabel("Name: ");
+		Name_Label.setBounds(20, 60, 200, 30);
+		
+		JLabel Desc_Label = new JLabel("Description: ");
+		Desc_Label.setBounds(20, 90, 200, 30);
+		
+		JLabel Price_Label = new JLabel("Price: ");
+		Price_Label.setBounds(20, 120, 200, 30);
+		
+		JLabel Stock_Label = new JLabel("Stock: ");
+		Stock_Label.setBounds(20, 150, 200, 30);
+		
+		JTextField Id_Field = new JTextField();
+		Id_Field.setBounds(100, 30, 200, 30);
+		
+		JTextField Name_Field = new JTextField();
+		Name_Field.setBounds(100, 60, 200, 30);
+		
+		JTextField Desc_Field = new JTextField();
+		Desc_Field.setBounds(100, 90, 200, 30);
+		
+		JTextField Price_Field = new JTextField();
+		Price_Field.setBounds(100, 120, 200, 30);
+		
+		JTextField Stock_Field = new JTextField();
+		Stock_Field.setBounds(100, 150, 200, 30);
 
-		productFrame.setTitle("Add Product");
-		productFrame.setSize(300, 600);
-		productFrame.setLocationRelativeTo(null);
-		productFrame.setLayout(new BorderLayout());
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		JButton SaveBtn = new JButton("Save");
+		SaveBtn.setBounds(150, 200, 100, 30);
 		
-		Add_Panel = new JPanel(new GridLayout(2, 5));
-		Id_Label = new JLabel("Product ID: ");
-		Name_Label = new JLabel("Name: ");
-		Desc_Label = new JLabel("Description: ");
-		Price_Label = new JLabel("Price: ");
-		Stock_Label = new JLabel("Stock: ");
-		Id_field = new JTextField();
-		Name_field = new JTextField();
-		Desc_field = new JTextField();
-		Price_field = new JTextField();
-		Stock_field = new JTextField();
+		Cont.add(Title);
+		Cont.add(Id_Label);
+		Cont.add(Name_Label);
+		Cont.add(Desc_Label);
+		Cont.add(Price_Label);
+		Cont.add(Stock_Label);
+		Cont.add(Id_Field);
+		Cont.add(Name_Field);
+		Cont.add(Desc_Field);
+		Cont.add(Price_Field);
+		Cont.add(Stock_Field);
+		Cont.add(SaveBtn);
 		
-		Add_Panel.add(Id_Label);
-		Add_Panel.add(Id_field);
 		
-		Add_Panel.add(Name_Label);
-		Add_Panel.add(Name_field);
-		
-		Add_Panel.add(Desc_Label);
-		Add_Panel.add(Desc_field);
-		
-		Add_Panel.add(Price_Label);
-		Add_Panel.add(Price_field);
-		
-		Add_Panel.add(Stock_Label);
-		Add_Panel.add(Stock_field);
-		
-		add(Add_Panel, BorderLayout.CENTER);
-		
-		buttonSave = new JButton("Save");
-		add(buttonSave, BorderLayout.SOUTH);
 		
 	}
 	
@@ -219,10 +261,13 @@ public class View_Product extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
 			AddProduct();
+			Add.setVisible(true);
 		} else if (e.getSource() == buttonDelete) {
 			DeleteProduct();
+			Delete.setVisible(true);
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
+			Update.setVisible(true);
 		}
 		
 	}
