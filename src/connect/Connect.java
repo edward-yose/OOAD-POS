@@ -8,6 +8,7 @@ public class Connect {
 	
 	public static Connection connect() {
 		if (conn == null) {
+			// pengaturan utama ke database
 			MysqlDataSource source = new MysqlDataSource();
 			source.setServerName("localhost");
 			source.setUser("root");

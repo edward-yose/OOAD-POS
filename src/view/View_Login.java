@@ -124,7 +124,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		switch(EmployeeController.logEmployeeIn(username, password)) {
 			case 1: {
 				dispose();
-				new View_Manager();
+				new View_TransactionManagement();
 				break;
 			}
 			case 2: {
@@ -139,7 +139,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 			}
 			case 4: {
 				dispose();
-				new View_TransactionManagement();
+				new View_Manager();
 				break;
 			}
 			
