@@ -35,7 +35,7 @@ public class CartController {
 				return "Insert Failed";
 				}
 				else {
-					grandTotal+=Product.getPrice(productid);
+					grandTotal+=Product.getPrice(productid)*qty;
 					return null;
 				}
 		}
@@ -46,7 +46,7 @@ public class CartController {
 				return "Adding Failed";
 				}
 				else {
-					grandTotal+=Product.getPrice(productid);
+					grandTotal+=Product.getPrice(productid)*qty;
 					return null;
 				}
 		}
@@ -60,6 +60,7 @@ public class CartController {
 		if(Product.selectExist(productid)==false) {
 			return "must exist in database!";
 		}
+		int cartqty=Cart.getQty(productid);
 		
 		Cart i = new Cart(productid,qty);
 		boolean isSuccess = i.delete();
@@ -68,7 +69,8 @@ public class CartController {
 			return "remove Failed";
 		}
 		else {
-			grandTotal-=Product.getPrice(productid);
+			grandTotal-=Product.getPrice(productid)*cartqty;
+			
 			return null;
 		}
 	}

@@ -135,7 +135,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 					i.getQty()
 			});
 		}
-		totalprice =  JLabel(String.valueOf(CartController.getGrandTotal()));
+		totalprice.setText(String.valueOf(CartController.getGrandTotal()));
 	
 	}
 	private void add() {
@@ -161,7 +161,16 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 }
 	
 	private void checkout() {
-		
+		Object[]opt= {"Cash", "Credit Card"};
+		int opsi=JOptionPane.showOptionDialog(this, "Choose the payment method","Payment Method",
+				JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,
+				opt, opt[0]);
+		if(opsi==0) {
+			//cash
+		}
+		else if(opsi==1){
+			//CC
+		}
 	}
 
 	@Override

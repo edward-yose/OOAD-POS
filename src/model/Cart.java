@@ -94,6 +94,19 @@ public class Cart {
 		}
 	}
 	
+	public static int getQty(int productid) {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("SELECT * from cartitem where productid=?");
+			ps.setInt(1, productid);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt(2);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 	
 	public int getProductid() {
 		return productid;
