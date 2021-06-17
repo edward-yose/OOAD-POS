@@ -147,6 +147,8 @@ public class View_Product extends JFrame implements ActionListener{
 		
 		buttonSave = new JButton("Add");
 		add(buttonSave, BorderLayout.SOUTH);
+		
+		productFrame.setVisible(true);
 	}
 	
 	private void DeleteProduct() {
@@ -168,12 +170,15 @@ public class View_Product extends JFrame implements ActionListener{
 		
 		buttonDelete = new JButton("Delete");
 		add(buttonDelete, BorderLayout.SOUTH);
+		
+		productFrame.setVisible(true);
+		
 	}
 	
 	private void UpdateProduct() {
 		productFrame = new JFrame();
 
-		productFrame.setTitle("Add Product");
+		productFrame.setTitle("Edit Product");
 		productFrame.setSize(300, 600);
 		productFrame.setLocationRelativeTo(null);
 		productFrame.setLayout(new BorderLayout());
@@ -210,6 +215,8 @@ public class View_Product extends JFrame implements ActionListener{
 		
 		buttonSave = new JButton("Save");
 		add(buttonSave, BorderLayout.SOUTH);
+		
+		productFrame.setVisible(true);
 		
 	}
 	
