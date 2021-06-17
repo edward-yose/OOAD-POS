@@ -1,5 +1,6 @@
 package model;
 
+import java.security.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +13,9 @@ public class Transaction {
 	private Integer id;
 	private Date purchaseDate;
 	private Integer employeeId;
-	private String paymentType;
+	private String paymentType; 
 	
 	private Connect con;
-	
-
 
 	public Transaction(int id, Date purchaseDate, int employeeId, String paymentType) {
 		this.id = id;
@@ -24,6 +23,8 @@ public class Transaction {
 		this.employeeId = employeeId;
 		this.paymentType = paymentType;
 	}
+	
+	
 	
 	public static Vector<Transaction> getAllTransaction(){
 		Vector<Transaction> results = new Vector<Transaction>();
@@ -72,6 +73,23 @@ public class Transaction {
 		}
 		
 		return results;
+	}
+	
+	public boolean pushTransaction() {
+		try {
+			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO transaction values(?,?,?,?)");
+			ps.setInt(1, 0);
+			ps.setDate(2, (java.sql.Date) purchaseDate);
+			ps.setInt(3, employeeId);
+			ps.setString(4, paymentType);
+			return (ps.executeUpdate() == 1);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("error insert transaction");
+			return false;
+		}
+		
 	}
 	
 	
