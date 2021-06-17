@@ -1,7 +1,6 @@
 package controller;
 
 import model.Employee;
-import model.Role;
 
 public class EmployeeController {
 	
@@ -16,26 +15,6 @@ public class EmployeeController {
 		
 		if(username.length() > 0 && password.length() > 0) {
 			if(user.getPassword() != null && user.getPassword().equals(password)) {
-				
-				switch(Role.getRole(user.getRoleID()).getName()) {
-				
-					case "Transaction Management": {
-						return 1;
-					}
-					
-					case "Product Management": {
-						return 2;
-					}
-					
-					case "Human Resource Management": {
-						return 3;
-					}
-					
-					case "Manager": {
-						return 4;
-					}
-				}
-				
 				return user.getRoleID();
 			} else {
 				return -1;			
