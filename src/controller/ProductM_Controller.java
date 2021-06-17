@@ -13,8 +13,7 @@ public class ProductM_Controller {
 	}
 	
 	public static int addProduct(Integer id, String name, String description, Integer price, Integer stock) {
-		 Product prod = new Product();
-		 prod = Product.AddProduct(product);
+		
 		
 		
 		
