@@ -109,14 +109,20 @@ public class Product {
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			return rs.next();
 =======
+=======
+>>>>>>> Stashed changes
 			if(rs.wasNull()) {
 				return false;
 			}
 			else {
 				return true;
 			}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,6 +136,7 @@ public class Product {
 			ps.setInt(1, productid);
 			ResultSet rs = ps.executeQuery();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			rs.next();
 			return rs.getInt(5);
 		} catch (SQLException e) {
@@ -137,6 +144,13 @@ public class Product {
 			return 0;
 		}
 
+=======
+			return rs.getInt(5);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 1000;
+		}
+>>>>>>> Stashed changes
 	}
 	
 	public static int getPrice(int productid) {
