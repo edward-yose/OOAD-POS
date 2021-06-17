@@ -108,7 +108,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Container Cont = Add.getContentPane();
 		Cont.setLayout(null);
 		
-		JLabel Title = new JLabel("Add Product to Database");
+		JLabel Title = new JLabel("Add Product");
 		Title.setBounds(120, 5, 200, 30);
 		
 		JLabel Id_Label = new JLabel("Product ID: ");
@@ -171,7 +171,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Container Cont = Delete.getContentPane();
 		Cont.setLayout(null);
 		
-		JLabel Title = new JLabel("Delete Product from Database");
+		JLabel Title = new JLabel("Delete Product");
 		Title.setBounds(100, 5, 200, 30);
 		
 		JLabel Id_Label = new JLabel("Product ID: ");
@@ -195,14 +195,14 @@ public class View_Product extends JFrame implements ActionListener{
 		
 		Update = new JFrame();
 		
-		Update.setTitle("Add Product");
+		Update.setTitle("Update Product");
 		Update.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		Update.setBounds(200, 200, 400, 300);
 		
 		Container Cont = Update.getContentPane();
 		Cont.setLayout(null);
 		
-		JLabel Title = new JLabel("Update Product in Database");
+		JLabel Title = new JLabel("Update Product");
 		Title.setBounds(120, 5, 200, 30);
 		
 		JLabel Id_Label = new JLabel("Product ID: ");

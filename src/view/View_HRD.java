@@ -154,14 +154,14 @@ private void EditUser() {
 	
 	Edit = new JFrame();
 	
-	Edit.setTitle("Add User");
+	Edit.setTitle("Edit User");
 	Edit.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	Edit.setBounds(200, 200, 400, 300);
 	
 	Container Cont = Edit.getContentPane();
 	Cont.setLayout(null);
 	
-	JLabel Title = new JLabel("Update User");
+	JLabel Title = new JLabel("Edit User");
 	Title.setBounds(120, 5, 200, 30);
 	
 	JLabel IDLabel = new JLabel("ID: ");
@@ -201,7 +201,7 @@ private void EditUser() {
 	PasswordField.setBounds(100, 180, 200, 30);
 
 	JButton EditBtn = new JButton("Update");
-	EditBtn.setBounds(150, 200, 100, 30);
+	EditBtn.setBounds(150, 225, 100, 30);
 	
 	Cont.add(Title);
 	Cont.add(IDLabel);
@@ -241,7 +241,7 @@ private void DeleteUser() {
 	IDField.setBounds(100, 30, 200, 30);
 
 	JButton DelBtn = new JButton("Delete");
-	DelBtn.setBounds(150, 100, 100, 30);
+	DelBtn.setBounds(150, 75, 100, 30);
 	
 	Cont.add(Title);
 	Cont.add(IDLabel);
