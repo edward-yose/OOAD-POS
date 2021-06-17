@@ -4,7 +4,7 @@ import model.Employee;
 
 public class EmployeeController {
 	
-	public static int logEmployeeIn (String username, String password, String status) {
+	public static int logEmployeeIn (String username, String password) {
 		// TO-DO Login validation
 		
 		Employee user = new Employee();
@@ -13,8 +13,8 @@ public class EmployeeController {
 //		System.out.println("Name is: " + user.getName());
 //		System.out.println("Password is: " + user.getPassword() + ". Entered password is: " + password);
 		
-		if(username.length() > 0 && password.length() > 0 &&  status == "active") {
-			if(user.getPassword() != null && user.getPassword().equals(password)) {
+		if(username.length() > 0 && password.length() > 0) {
+			if(user.getPassword() != null && user.getStatus() == "active" && user.getPassword().equals(password)) {
 				return user.getRoleID();
 			} else {
 				return -1;			
