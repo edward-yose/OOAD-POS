@@ -28,6 +28,10 @@ public class Product {
 		this.stock = stock;
 	}
 	
+	public Product() {
+		
+	}
+	
 	public static List<Product> getAllProducts() {
 		
 		List<Product> ProductList = new ArrayList<Product>();
