@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -152,7 +153,7 @@ public class View_Product extends JFrame implements ActionListener{
 		JLabel Stock_Label = new JLabel("Stock: ");
 		Stock_Label.setBounds(20, 150, 200, 30);
 		
-		JTextField Id_Field = new JTextField();
+		JSpinner Id_Field = new JSpinner();
 		Id_Field.setBounds(100, 30, 200, 30);
 		
 		JTextField Name_Field = new JTextField(toString());
@@ -161,10 +162,10 @@ public class View_Product extends JFrame implements ActionListener{
 		JTextField Desc_Field = new JTextField();
 		Desc_Field.setBounds(100, 90, 200, 30);
 		
-		JTextField Price_Field = new JTextField();
+		JSpinner Price_Field = new JSpinner();
 		Price_Field.setBounds(100, 120, 200, 30);
 		
-		JTextField Stock_Field = new JTextField();
+		JSpinner Stock_Field = new JSpinner();
 		Stock_Field.setBounds(100, 150, 200, 30);
 
 		JButton AddBtn = new JButton("Add");
@@ -183,6 +184,11 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Stock_Field);
 		Cont.add(AddBtn);
 		
+		int id = (int) Id_Field.getValue();
+		String name = Name_Field.getText();
+		String desc = Desc_Field.getText();
+		int price = (int) Price_Field.getValue();
+		int stock = (int) Stock_Field.getValue();	
 	}
 	
 
@@ -203,7 +209,7 @@ public class View_Product extends JFrame implements ActionListener{
 		JLabel Id_Label = new JLabel("Product ID: ");
 		Id_Label.setBounds(20, 30, 200, 30);
 		
-		JTextField Id_Field = new JTextField();
+		JSpinner Id_Field = new JSpinner();
 		Id_Field.setBounds(100, 30, 200, 30);
 		
 		JButton DelBtn = new JButton("Delete");
@@ -213,6 +219,8 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Id_Label);
 		Cont.add(Id_Field);
 		Cont.add(DelBtn);
+		
+		int id = (int) Id_Field.getValue();
 				
 		
 	}
@@ -247,7 +255,7 @@ public class View_Product extends JFrame implements ActionListener{
 		JLabel Stock_Label = new JLabel("Stock: ");
 		Stock_Label.setBounds(20, 150, 200, 30);
 		
-		JTextField Id_Field = new JTextField();
+		JSpinner Id_Field = new JSpinner();
 		Id_Field.setBounds(100, 30, 200, 30);
 		
 		JTextField Name_Field = new JTextField();
@@ -256,10 +264,10 @@ public class View_Product extends JFrame implements ActionListener{
 		JTextField Desc_Field = new JTextField();
 		Desc_Field.setBounds(100, 90, 200, 30);
 		
-		JTextField Price_Field = new JTextField();
+		JSpinner Price_Field = new JSpinner();
 		Price_Field.setBounds(100, 120, 200, 30);
 		
-		JTextField Stock_Field = new JTextField();
+		JSpinner Stock_Field = new JSpinner();
 		Stock_Field.setBounds(100, 150, 200, 30);
 
 		JButton SaveBtn = new JButton("Save");
@@ -278,6 +286,11 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Stock_Field);
 		Cont.add(SaveBtn);
 		
+		int id = (int) Id_Field.getValue();
+		String name = Name_Field.getText();
+		String desc = Desc_Field.getText();
+		int price = (int) Price_Field.getValue();
+		int stock = (int) Stock_Field.getValue();
 		
 		
 	}
