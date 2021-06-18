@@ -326,7 +326,7 @@ public class View_Product extends JFrame implements ActionListener{
 			ProductM_Controller.UpdateProduct((int) Id_Field.getValue(), Name_Field.getText(), Desc_Field.getText(), (int) Price_Field.getValue(), (int) Stock_Field.getValue());
 			refreshData();
 			Add.setVisible(false);
-		} else if (e.getSource() == buttonAIn) {
+		} else if (e.getSource() == buttonDIn) {
 			ProductM_Controller.DeleteProduct( (int) Id_Field.getValue());
 			refreshData();
 			Add.setVisible(false);

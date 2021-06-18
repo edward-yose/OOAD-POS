@@ -14,7 +14,7 @@ public class ProductM_Controller {
 	
 	public static String AddProduct(int id, String name, String description, int price, int stock) {
 		//validation
-		if (id == 0) return "ID cannot be null";
+		if (id < 0) return "ID cannot be null";
 		if (name.isEmpty()) return "Name cannot be empty";
 		if (description.isEmpty()) return "Description cannot be empty";
 		if (price <= 0) return "Price must be above 0";
@@ -29,7 +29,7 @@ public class ProductM_Controller {
 	
 	public static String UpdateProduct(int id, String name, String description, int price, int stock) {
 		//validation
-		if (id == 0) return "ID cannot be null";
+		if (id < 0) return "ID cannot be null";
 		if (name.isEmpty()) return "Name cannot be empty";
 		if (description.isEmpty()) return "Description cannot be empty";
 		if (price <= 0) return "Price must be above 0";
@@ -44,7 +44,7 @@ public class ProductM_Controller {
 	
 	public static String DeleteProduct(int id) {
 		//validation
-		if (id == 0) return "ID cannot be null";
+		if (id < 0) return "ID cannot be null";
 		
 		Product p = new Product(id, null, null, 0, 0);
 		boolean isSuccess = p.DeleteProduct();
@@ -64,6 +64,9 @@ public class ProductM_Controller {
 			}
 	}
 	
+	public ProductM_Controller() {
+		
+	}
 	
 	
 }

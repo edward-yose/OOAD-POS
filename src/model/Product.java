@@ -58,7 +58,7 @@ public class Product {
 	}
 	
 	public boolean AddProduct() {
-		String query = "INSERT INTO Product VALUES(null, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Product VALUES(?, ?, ?, ?, ?)";
 				try {
 					PreparedStatement ps = Connect.connect().prepareStatement(query);
 					ps.setInt(1, id);
@@ -77,7 +77,7 @@ public class Product {
 	}
 		
 	public boolean UpdateProduct() {
-		String query = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ?";
+		String query = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
 			ps.setString(1, name);
