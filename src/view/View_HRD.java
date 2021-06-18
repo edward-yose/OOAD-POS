@@ -41,6 +41,7 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JButton EditBtn;
 	private JButton DelBtn;
 	
+	JSpinner IDField;
 	JSpinner RoleField;
 	JTextField NameField;
 	JTextField UsernameField;
@@ -219,22 +220,22 @@ private void EditUser() {
 	JLabel PasswordLabel = new JLabel("Password: ");
 	PasswordLabel.setBounds(20, 180, 200, 30);
 	
-	JSpinner IDField = new JSpinner();
+	IDField = new JSpinner();
 	IDField.setBounds(100, 30, 200, 30);
 	
-	JSpinner RoleField = new JSpinner();
+	RoleField = new JSpinner();
 	RoleField.setBounds(100, 60, 200, 30);
 	
-	JTextField NameField = new JTextField();
+	NameField = new JTextField();
 	NameField.setBounds(100, 90, 200, 30);
 	
-	JTextField UsernameField = new JTextField();
+	UsernameField = new JTextField();
 	UsernameField.setBounds(100, 120, 200, 30);
 	
-	JSpinner SalaryField = new JSpinner();
+	SalaryField = new JSpinner();
 	SalaryField.setBounds(100, 150, 200, 30);
 	
-	JTextField PasswordField = new JPasswordField();
+	PasswordField = new JPasswordField();
 	PasswordField.setBounds(100, 180, 200, 30);
 
 	EditBtn = new JButton("Update");
@@ -274,7 +275,7 @@ private void DeleteUser() {
 	JLabel IDLabel = new JLabel("ID: ");
 	IDLabel.setBounds(20, 30, 200, 30);
 	
-	JSpinner IDField = new JSpinner();
+	IDField = new JSpinner();
 	IDField.setBounds(100, 30, 200, 30);
 
 	DelBtn = new JButton("Delete");
@@ -306,9 +307,13 @@ private void DeleteUser() {
 			refreshData();
 			Add.setVisible(false);
 		} else if (e.getSource() == EditBtn) {
-//			HRDController.editUser(id, roleID, name, username, salary, status, password);
+			HRDController.editUser((int) IDField.getValue(), (int) RoleField.getValue(), NameField.getText(), UsernameField.getText(), (int) SalaryField.getValue(), "Active", PasswordField.getText());
+			refreshData();
+			Edit.setVisible(false);
 		} else if (e.getSource() ==  DelBtn) {
-//			HRDController.deleteUser(id);
+			HRDController.deleteUser((int) IDField.getValue());
+			refreshData();
+			Delete.setVisible(false);
 		}
 		
 	}
