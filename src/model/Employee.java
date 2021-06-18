@@ -144,7 +144,6 @@ public class Employee {
 			
 			while(rs.next()) {
 				results.add(new Employee(
-//					results.size(), // ini harusnya +1 tapi bingung nambahinnya wkkwkwk
 						rs.getInt("id"),
 						rs.getInt("roleID"),
 						rs.getString("name"),

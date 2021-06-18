@@ -28,8 +28,6 @@ public class EmployeeController {
 		} else {
 			return -2;
 		}
-		
-		
 	}
 
 	public EmployeeController() {

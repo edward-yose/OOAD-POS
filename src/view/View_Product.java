@@ -215,6 +215,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Desc_Label.setBounds(20, 90, 200, 30);
 		
 		JLabel Price_Label = new JLabel("Price: ");
+		
 		Price_Label.setBounds(20, 120, 200, 30);
 		
 		JLabel Stock_Label = new JLabel("Stock: ");
