@@ -34,7 +34,7 @@ public class HRDController {
 		Employee e = new Employee(id, roleID, name, username, salary, status, password);
 		boolean isSuccess = e.edit_user();
 		
-		if(!isSuccess) return "add failed"; 
+		if(!isSuccess) return "edit failed"; 
 		else return null;
 		
 	}
@@ -44,7 +44,7 @@ public class HRDController {
 		Employee e = new Employee(id, null, null, null, null, "Not Active", null);
 		boolean isSuccess = e.delete_user();
 		
-		if(!isSuccess) return "add failed"; 
+		if(!isSuccess) return "delete failed"; 
 		else return null;
 		
 	}

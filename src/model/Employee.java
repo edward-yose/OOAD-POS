@@ -152,12 +152,12 @@ public class Employee {
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
-			ps.setInt(1, id);
-			ps.setInt(2, roleID);
-			ps.setString(3, name);
-			ps.setString(4, username);
-			ps.setInt(5, salary);
-			ps.setString(6, password);
+			ps.setInt(1, roleID);
+			ps.setString(2, name);
+			ps.setString(3, username);
+			ps.setInt(4, salary);
+			ps.setString(5, password);
+			ps.setInt(6, id);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
