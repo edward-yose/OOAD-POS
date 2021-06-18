@@ -1,5 +1,6 @@
 package view;
 
+import controller.HRDController;
 import java.awt.GridLayout;
 
 import java.awt.BorderLayout;
