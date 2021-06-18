@@ -17,6 +17,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ProductM_Controller;
+
 
 public class View_Product extends JFrame implements ActionListener{
 	private JTable table;
@@ -29,6 +31,11 @@ public class View_Product extends JFrame implements ActionListener{
 	private JFrame Delete;
 	private JFrame Update;
 	private View_TransactionManagement viewCart;
+	int id;
+	String name;
+	String descrpition;
+	int price;
+	int stock;
 	
 	public View_Product(int roleID) {
 		initLayout(roleID);
@@ -302,12 +309,15 @@ public class View_Product extends JFrame implements ActionListener{
 		if (e.getSource() == buttonAdd) {
 			AddProduct();
 			Add.setVisible(true);
+			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonDelete) {
 			DeleteProduct();
 			Delete.setVisible(true);
+			ProductM_Controller.DeleteProduct(id);
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
 			Update.setVisible(true);
+			ProductM_Controller.UpdateProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonAddToCart) {
 			viewCart.setVisible(true);
 		} 
