@@ -179,6 +179,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Stock_Field.setBounds(100, 150, 200, 30);
 
 		buttonAIn = new JButton("Add");
+		buttonAIn.addActionListener(this);
 		buttonAIn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
@@ -224,13 +225,14 @@ public class View_Product extends JFrame implements ActionListener{
 		JSpinner Id_Field = new JSpinner();
 		Id_Field.setBounds(100, 30, 200, 30);
 		
-		JButton DelBtn = new JButton("Delete");
-		DelBtn.setBounds(120, 90, 100, 30);
+		buttonDIn = new JButton("Delete");
+		buttonDIn.addActionListener(this);
+		buttonDIn.setBounds(120, 90, 100, 30);
 		
 		Cont.add(Title);
 		Cont.add(Id_Label);
 		Cont.add(Id_Field);
-		Cont.add(DelBtn);
+		Cont.add(buttonDIn);
 		
 		int id = (int) Id_Field.getValue();
 				
@@ -283,6 +285,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Stock_Field.setBounds(100, 150, 200, 30);
 
 		buttonUIn = new JButton("Save");
+		buttonUIn.addActionListener(this);
 		buttonUIn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
@@ -324,6 +327,7 @@ public class View_Product extends JFrame implements ActionListener{
 			viewCart.setVisible(true);
 		} else if (e.getSource() == buttonAIn) {
 			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
+			System.out.println("TRUE");
 		}
 		
 	}
