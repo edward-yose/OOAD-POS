@@ -27,6 +27,9 @@ public class View_Product extends JFrame implements ActionListener{
 	private JButton buttonDelete;
 	private JButton buttonUpdate;
 	private JButton buttonAddToCart;
+	private JButton buttonAIn;
+	private JButton buttonDIn;
+	private JButton buttonUIn;
 	private JFrame Add;
 	private JFrame Delete;
 	private JFrame Update;
@@ -175,8 +178,8 @@ public class View_Product extends JFrame implements ActionListener{
 		JSpinner Stock_Field = new JSpinner();
 		Stock_Field.setBounds(100, 150, 200, 30);
 
-		JButton AddBtn = new JButton("Add");
-		AddBtn.setBounds(150, 200, 100, 30);
+		buttonAIn = new JButton("Add");
+		buttonAIn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
 		Cont.add(Id_Label);
@@ -189,13 +192,15 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Desc_Field);
 		Cont.add(Price_Field);
 		Cont.add(Stock_Field);
-		Cont.add(AddBtn);
+		Cont.add(buttonAIn);
 		
 		int id = (int) Id_Field.getValue();
 		String name = Name_Field.getText();
 		String desc = Desc_Field.getText();
 		int price = (int) Price_Field.getValue();
 		int stock = (int) Stock_Field.getValue();	
+		
+		
 	}
 	
 
@@ -277,8 +282,8 @@ public class View_Product extends JFrame implements ActionListener{
 		JSpinner Stock_Field = new JSpinner();
 		Stock_Field.setBounds(100, 150, 200, 30);
 
-		JButton SaveBtn = new JButton("Save");
-		SaveBtn.setBounds(150, 200, 100, 30);
+		buttonUIn = new JButton("Save");
+		buttonUIn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
 		Cont.add(Id_Label);
@@ -291,7 +296,7 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Desc_Field);
 		Cont.add(Price_Field);
 		Cont.add(Stock_Field);
-		Cont.add(SaveBtn);
+		Cont.add(buttonUIn);
 		
 		int id = (int) Id_Field.getValue();
 		String name = Name_Field.getText();
@@ -309,18 +314,17 @@ public class View_Product extends JFrame implements ActionListener{
 		if (e.getSource() == buttonAdd) {
 			AddProduct();
 			Add.setVisible(true);
-			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonDelete) {
 			DeleteProduct();
 			Delete.setVisible(true);
-			ProductM_Controller.DeleteProduct(id);
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
 			Update.setVisible(true);
-			ProductM_Controller.UpdateProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonAddToCart) {
 			viewCart.setVisible(true);
-		} 
+		} else if (e.getSource() == buttonAIn) {
+			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
+		}
 		
 	}
 }
