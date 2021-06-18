@@ -47,17 +47,21 @@ public class Transaction {
 		
 	public static Vector<Transaction> getTransactionReport(int date, int month, int year) {
 		Vector<Transaction> results = new Vector<Transaction>();
-		String query = "SELECT * FROM transaction WHERE DAY(purchaseDate) = ?  AND MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";
+		String query;
+		if(date == 0) {
+			query = "SELECT * FROM transaction WHERE MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";
+		} else {
+			query = "SELECT * FROM transaction WHERE MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? AND DAY(purchaseDate) = ? ";			
+		}
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
-			if (date == 0) {
-				ps.setString(1, "DAY(purchaseDate)"); 
-			} else {
-				ps.setInt(1, date);
+			ps.setInt(1, month);
+			ps.setInt(2, year);
+			if(date != 0) {
+				ps.setInt(3, date);
 			}
-			ps.setInt(2, month);
-			ps.setInt(3, year);
 			
+			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
