@@ -30,7 +30,7 @@ public class Employee {
 		this.idNow=id;
 		this.roleID = roleID;
 		this.name = name;
-		this.username = username;		
+		this.username = username;	
 		this.salary = salary;
 		this.status = status;
 		this.password = password;
@@ -131,15 +131,16 @@ public class Employee {
 	
 	public static Vector<Employee> AddEmployee(Integer roleID, String name, String username, Integer salary, String password ) {
 		Vector<Employee> results = new Vector<Employee>();
-		String query = "INSERT INTO employee VALUES(SELECT COUNT(*) FROM employee, ?, ?, ?, ?, 'active', ?)";
+		String query = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, 'active', ?)";
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
-			ps.setInt(1, roleID);
-			ps.setString(2, name);
-			ps.setString(3, username);
-			ps.setInt(4, salary);
-			ps.setString(5, password);
+			ps.setInt(1, id);
+			ps.setInt(2, roleID);
+			ps.setString(3, name);
+			ps.setString(4, username);
+			ps.setInt(5, salary);
+			ps.setString(6, password);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
