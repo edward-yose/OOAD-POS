@@ -83,7 +83,7 @@ public class View_Manager extends JFrame implements ActionListener {
 			public void mouseClicked(MouseEvent evt) {
 				int row = table.rowAtPoint(evt.getPoint());
 				int transactionid = (int) table.getValueAt(row, 0);
-				System.out.println("Row: " + row + ", transactionID: " + transactionid);
+//				System.out.println("Row: " + row + ", transactionID: " + transactionid);
 				viewAllTransactionItem(transactionid);
 			}
 		});

@@ -4,6 +4,7 @@ import model.Cart;
 import model.Employee;
 import model.Product;
 import model.Transaction;
+import model.TransactionItem;
 import controller.CartController;
 import controller.ProductM_Controller;
 import controller.TransactionController;
@@ -12,6 +13,8 @@ import controller.TransactionItemController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.util.Vector;
 
@@ -23,7 +26,6 @@ import javax.swing.text.JTextComponent;
 
 public class View_TransactionManagement extends JFrame implements ActionListener{
 	private JTable table;
-	private JFrame history;
 	private DefaultTableModel dtm;
 	private JSpinner spinnerId;
 	private JSpinner spinnerQuantity;
@@ -32,12 +34,22 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	private JButton buttonCheckOut;
 	private JButton buttonViewHistory;
 	private JLabel totalprice=new JLabel(); 
+	
+	private JFrame historyFrame;
+	private JTable historyTable;
+	private DefaultTableModel historyDtm;
+	
+	private JFrame productFrame;
+	private JTable productTable;
+	private DefaultTableModel productDtm;
 
 	
 	public View_TransactionManagement() {
 		initLayout();
 		setUpDataModel();
 		refreshData();
+		prepHistoryFrame();
+		prepProductFrame();
 	}
 	
 	private void initLayout() {
@@ -151,6 +163,125 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		totalprice.setText(String.valueOf(CartController.getGrandTotal()));
 	
 	}
+	
+	private void prepHistoryFrame() {
+		
+		historyFrame = new JFrame();
+		
+		historyFrame.setTitle("Transaction View");
+		historyFrame.setSize(600, 400);
+		historyFrame.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		// JPanel
+		JPanel contentPane = new JPanel();
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		contentPane.setLayout(new GridLayout(1, 1, 10, 10));
+		historyFrame.setContentPane(contentPane);
+		
+		// JScrollPane
+		JScrollPane scrollPane = new JScrollPane();
+		
+		// JTable
+		historyTable = new JTable();
+		historyTable.setDefaultEditor(Object.class, null);
+		
+		historyTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				int row = historyTable.rowAtPoint(evt.getPoint());
+				int transactionid = (int) historyTable.getValueAt(row, 0);
+//				System.out.println("Row: " + row + ", transactionID: " + transactionid);
+				viewAllTransactionItem(transactionid);
+			}
+		});
+		
+		// TableModel_TransactionItem
+		historyDtm = new DefaultTableModel(
+			new String[] { "id", "purchaseDate", "employeeId", "paymentType" },
+			0
+		);
+		historyTable.setModel(historyDtm);
+				
+		scrollPane.setViewportView(historyTable);
+		historyFrame.add(scrollPane);
+		
+	}
+	
+	private void viewHistory() {
+		
+		Vector<Transaction> transactions = TransactionController.getTodayTransaction();
+		
+		// Get table contents
+		historyDtm.setRowCount(0);
+		
+		for (Transaction i : transactions) {
+			historyDtm.addRow(new Object[] {
+				i.getId(),
+				i.getPurchaseDate(),
+				i.getEmployeeId(),
+				i.getPaymentType()
+			});
+		}
+		
+		historyFrame.setVisible(true);	
+		
+		return;
+		
+	}
+	
+	private void prepProductFrame() {
+		
+		productFrame = new JFrame();
+		
+		productFrame.setTitle("TransactionItem View");
+		productFrame.setSize(600, 400);
+		productFrame.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		// JScrollPane
+		JScrollPane scrollPane = new JScrollPane();
+		
+		// JTable
+		productTable = new JTable();
+		productTable.setDefaultEditor(Object.class, null);
+		
+		// JPanel
+		JPanel contentPane = new JPanel();
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		contentPane.setLayout(new GridLayout(1, 1, 10, 10));
+		productFrame.setContentPane(contentPane);
+		
+		// TableModel_TransactionItem
+		productDtm = new DefaultTableModel(
+			new String[] { "transaction_id", "product_id", "quantity" },
+			0
+		);
+		productTable.setModel(productDtm);
+				
+		scrollPane.setViewportView(productTable);
+		productFrame.add(scrollPane);
+		
+	}
+	
+	private void viewAllTransactionItem(int transactionId) {
+		Vector<TransactionItem> transactionitems = TransactionController.getAllTransactionItem(transactionId);
+				
+		// Get table contents
+		productDtm.setRowCount(0);
+		
+		for (TransactionItem i : transactionitems) {
+			productDtm.addRow(new Object[] {
+				i.getTransactionid(),
+				i.getProductid(),
+				i.getQuantity()
+			});
+		}
+				
+		productFrame.setVisible(true);		
+		
+		return;
+	}
+	
 	private void add() {
 		int productid = (int)spinnerId.getValue();
 		int qty = (int)spinnerQuantity.getValue();
@@ -211,7 +342,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			checkout();
 		}
 		else if(e.getSource()==buttonViewHistory) {
-//			viewHistory();
+			viewHistory();
 		}
 		
 	}

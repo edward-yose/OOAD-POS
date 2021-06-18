@@ -48,15 +48,20 @@ public class Transaction {
 				
 		return results;
 	}
-	
-	public static Vector<Transaction> viewTransactionReport(int month, int year) {
-		Vector<Transaction> results = new Vector<Transaction>();
-		String query = "SELECT * FROM transaction WHERE MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";	
 		
+	public static Vector<Transaction> getTransactionReport(int date, int month, int year) {
+		Vector<Transaction> results = new Vector<Transaction>();
+		String query = "SELECT * FROM transaction WHERE DAY(purchaseDate) = ?  AND MONTH(purchaseDate) = ? AND YEAR(purchaseDate) = ? ";
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
-			ps.setInt(1, month);
-			ps.setInt(2, year);
+			if (date == 0) {
+				ps.setString(1, "DAY(purchaseDate)"); 
+			} else {
+				ps.setInt(1, date);
+			}
+			ps.setInt(2, month);
+			ps.setInt(3, year);
+			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
