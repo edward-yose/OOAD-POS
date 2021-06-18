@@ -187,6 +187,10 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			//CC
 			payMethod = "CREDIT CARD";
 		}
+		else if(opsi==2)
+		{
+			return;
+		}
 		String error = TransactionController.pushTransaction(Employee.idNow,payMethod);
 		error=TransactionItemController.pushTransactionItem();
 		error=ProductM_Controller.updateStock();
@@ -207,7 +211,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			checkout();
 		}
 		else if(e.getSource()==buttonViewHistory) {
-			viewHistory();
+//			viewHistory();
 		}
 		
 	}
