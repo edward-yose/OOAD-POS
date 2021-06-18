@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,6 +19,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import controller.EmployeeController;
+import controller.TransactionController;
+import model.Employee;
+import model.Transaction;
 
 public class View_HRD extends JFrame implements ActionListener{
 	
@@ -32,6 +39,7 @@ public class View_HRD extends JFrame implements ActionListener{
 	public View_HRD() {
 		initLayout();
 		setUpDataModel();
+		refreshData();
 	}
 	
 	private void initLayout() {
@@ -87,6 +95,23 @@ public class View_HRD extends JFrame implements ActionListener{
 				0
 			);
 			table.setModel(utm);
+	}
+	
+	private void refreshData() {
+		utm.setRowCount(0);
+		Vector<Employee> employees = EmployeeController.getAllEmployee();
+		
+		for (Employee i : employees) {
+			utm.addRow(new Object[] {
+					i.getId(),
+					i.getRoleID(),
+					i.getName(),
+					i.getUsername(),
+					i.getSalary(),
+					i.getStatus(),
+					i.getPassword()
+			});
+		}
 	}
 	
 private void AddUser() {
@@ -150,6 +175,7 @@ private void AddUser() {
 		Cont.add(PasswordField);
 		
 	}
+
 private void EditUser() {
 	
 	Edit = new JFrame();

@@ -1,8 +1,14 @@
 package controller;
 
+import java.util.Vector;
+
 import model.Employee;
 
 public class EmployeeController {
+	
+	public static Vector<Employee> getAllEmployee(){
+		return Employee.getAllEmployee();
+	}
 	
 	public static int logEmployeeIn (String username, String password) {
 		// TO-DO Login validation

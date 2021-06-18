@@ -40,6 +40,32 @@ public class Employee {
 		
 	}
 	
+	public static Vector<Employee> getAllEmployee(){
+		Vector<Employee> results = new Vector<Employee>();
+		
+		try {
+			Statement st = Connect.connect().createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM employee");
+			
+			while(rs.next()) {
+				results.add(new Employee(
+							rs.getInt("id"),
+							rs.getInt("roleID"),
+							rs.getString("name"),
+							rs.getString("username"),
+							rs.getInt("salary"),
+							rs.getString("status"),
+							rs.getString("password")
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		return results;
+	}
+	
 	public static Employee getEmployee(int id) {
 		Vector<Employee> results = new Vector<Employee>();
 		String query = "SELECT * FROM Employee WHERE id = ? ";	
