@@ -36,6 +36,9 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JFrame Add;
 	private JFrame Edit;
 	private JFrame Delete;
+	private JButton AddBtn;
+	private JButton EditBtn;
+	private JButton DeleteBtn;
 	
 	public View_HRD() {
 		initLayout();
