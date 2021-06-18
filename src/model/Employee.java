@@ -22,12 +22,7 @@ public class Employee {
 	private String password;
 	
 	private Connect connect;
-	
-	public Employee() {
 		
-	}
-	
-	
 	public Employee(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
 		this.id = id; 
 		this.idNow=id;
