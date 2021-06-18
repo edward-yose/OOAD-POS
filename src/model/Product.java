@@ -34,23 +34,27 @@ public class Product {
 	
 	public static Vector<Product> getAllProducts() {
 		
-		Vector<Product> ProductList = new Vector<Product>();
+		Vector<Product> ProductV = new Vector<Product>();
 		
 		try {
 			Statement st = Connect.connect().createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM product");
 			
 			while (rs.next()) {
-				Product product = new Product(rs.getInt("id"), rs.getString("name"), 
-						rs.getString("description"), rs.getInt("price"), rs.getInt("stock"));
-				ProductList.add(product);
+				ProductV.add(new Product(
+						rs.getInt("id"),
+						rs.getString("name"),
+						rs.getString("description"),
+						rs.getInt("price"),
+						rs.getInt("stock")
+						));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return ProductList;
+		return ProductV;
 	}
 	
 	public boolean AddProduct() {
