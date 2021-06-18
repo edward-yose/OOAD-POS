@@ -1,5 +1,6 @@
 package controller;
 
+import java.time.LocalDate;
 import java.util.Vector;
 
 import model.Cart;
@@ -14,8 +15,13 @@ public class TransactionController {
 		return Transaction.getAllTransaction();
 	}
 	
+	public static Vector<Transaction> getTodayTransaction() {
+		LocalDate today = LocalDate.now();
+		return Transaction.getTransactionReport(today.getDayOfMonth(), today.getMonthValue(), today.getYear());
+	}
+	
 	public static Vector<Transaction> viewTransactionReport(int month, int year) {
-		return Transaction.viewTransactionReport(month, year);
+		return Transaction.getTransactionReport(0, month, year);
 	}
 	
 	public static Vector<TransactionItem> getAllTransactionItem(int transactionId) {

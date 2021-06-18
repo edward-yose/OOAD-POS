@@ -26,7 +26,7 @@ public class Employee {
 	
 	
 	public Employee(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
-		this.id = id;
+		this.id = id; 
 		this.idNow=id;
 		this.roleID = roleID;
 		this.name = name;
