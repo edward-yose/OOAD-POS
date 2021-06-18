@@ -2,6 +2,7 @@ package view;
 
 import view.View_HRD;
 import view.View_Manager;
+import view.View_Product;
 import view.View_TransactionManagement;
 
 import controller.EmployeeController;
@@ -115,14 +116,14 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 	}
 	
 	private void loginTransactionManagement(){
-		View_TransactionManagement viewTransactionManagement = new View_TransactionManagement();
+		View_Product viewTransactionManagement = new View_Product(1);
 		viewTransactionManagement.setVisible(true);
 		dispose();
 		
 	}
 	
 	private void loginProduct(){
-		View_Product viewProduct = new View_Product();
+		View_Product viewProduct = new View_Product(2);
 		viewProduct.setVisible(true);
 		dispose();
 		

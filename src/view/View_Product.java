@@ -23,20 +23,23 @@ public class View_Product extends JFrame implements ActionListener{
 	private JButton buttonAdd;
 	private JButton buttonDelete;
 	private JButton buttonUpdate;
+	private JButton buttonAddToCart;
 	private JFrame Add;
 	private JFrame Delete;
 	private JFrame Update;
+	private View_TransactionManagement viewCart;
 	
-	public View_Product() {
-		initLayout();
+	public View_Product(int roleID) {
+		initLayout(roleID);
 		setUpData();
 		AddProduct();
 		DeleteProduct();
 		UpdateProduct();
+		prepCartFrame();
 	
 	}
-	
-	private void initLayout() {
+
+	private void initLayout(int roleID) {
 		//JFrame
 		setTitle("Product Management");
 		setSize(800, 600);
@@ -53,7 +56,7 @@ public class View_Product extends JFrame implements ActionListener{
 		table = new JTable();
 		
 		scroll.setViewportView(table);
-		add(scroll);
+		contentPane.add(scroll);
 	
 		JPanel panelCtrl = new JPanel();
 		panelCtrl.setLayout(new GridLayout(1, 2, 10, 10));
@@ -80,10 +83,26 @@ public class View_Product extends JFrame implements ActionListener{
 		buttonUpdate.addActionListener(this);
 		panelButtons.add(buttonUpdate);
 		
-		panelCtrl.add(panelP);
-		panelCtrl.add(panelButtons);
 		
-		add(panelCtrl);
+		JPanel panelCashierButtons = new JPanel();
+		panelCashierButtons.setLayout(new BoxLayout(panelCashierButtons, BoxLayout.Y_AXIS));
+		
+		// JButton AddToCart
+		buttonAddToCart = new JButton("Add to Cart");
+		buttonAddToCart.addActionListener(this);
+		panelCashierButtons.add(buttonAddToCart);		
+		
+		panelCtrl.add(panelP);
+		
+		if (roleID == 1) {
+			// IF CASHIER
+			panelCtrl.add(panelCashierButtons);			
+		} else if (roleID == 2) {
+			// IF NOT CASHIER
+			panelCtrl.add(panelButtons);			
+		}
+		
+		contentPane.add(panelCtrl);
 		
 		contentPane.setVisible(true);
 	}
@@ -94,6 +113,13 @@ public class View_Product extends JFrame implements ActionListener{
 			0
 		);
 		table.setModel(dtm);
+	}
+	
+	private void prepCartFrame() {
+		
+		viewCart = new View_TransactionManagement();
+		viewCart.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 	}
 
 	
@@ -269,7 +295,9 @@ public class View_Product extends JFrame implements ActionListener{
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
 			Update.setVisible(true);
-		}
+		} else if (e.getSource() == buttonAddToCart) {
+			viewCart.setVisible(true);
+		} 
 		
 	}
 }
