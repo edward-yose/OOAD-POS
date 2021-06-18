@@ -129,7 +129,7 @@ public class Employee {
 	}
 	
 	
-	public static Vector<Employee> AddEmployee(Integer roleID, String name, String username, Integer salary, String password ) {
+	public static Vector<Employee> AddEmployee(Integer id, Integer roleID, String name, String username, Integer salary, String password ) {
 		Vector<Employee> results = new Vector<Employee>();
 		String query = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, 'active', ?)";
 		
