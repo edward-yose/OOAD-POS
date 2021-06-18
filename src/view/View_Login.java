@@ -148,7 +148,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		@SuppressWarnings("deprecation")
 		String password = fieldPassword.getText();
 				
-		System.out.println(EmployeeController.logEmployeeIn(username, password));
+//		System.out.println(EmployeeController.logEmployeeIn(username, password));
 		
 		switch(EmployeeController.logEmployeeIn(username, password)) {
 			case 1: {
