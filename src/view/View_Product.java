@@ -306,8 +306,6 @@ public class View_Product extends JFrame implements ActionListener{
 		String desc = Desc_Field.getText();
 		int price = (int) Price_Field.getValue();
 		int stock = (int) Stock_Field.getValue();
-		
-		
 	}
 	
 	
