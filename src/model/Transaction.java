@@ -102,36 +102,29 @@ public class Transaction {
 		this.id = id;
 	}
 
-
 	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
-
 
 	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
-
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
-
 
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 
-
 	public String getPaymentType() {
 		return paymentType;
 	}
 
-
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
-
 
 	public Connect getCon() {
 		return con;
