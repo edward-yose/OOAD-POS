@@ -334,6 +334,11 @@ public class View_Product extends JFrame implements ActionListener{
 			viewCart.setVisible(true);
 		} else if (e.getSource() == buttonAIn) {
 			ProductM_Controller.AddProduct(id, name, desc, price, stock);
+			System.out.println("1 "+ id);
+			System.out.println("2 "+ name);
+			System.out.println("3 "+ desc);
+			System.out.println("4 "+ price);
+			System.out.println("5 "+ stock);
 		} else if (e.getSource() == buttonUIn) {
 			ProductM_Controller.UpdateProduct(id, name, desc, price, stock);
 		} else if (e.getSource() == buttonAIn) {
