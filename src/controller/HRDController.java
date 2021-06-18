@@ -11,7 +11,7 @@ public class HRDController {
 		return Employee.getAllEmployee();
 	}
 
-	public static String addUser(Integer id, Integer roleID, String name, String username, Integer salary, String status, String password) {
+	public static String addUser(int id, int roleID, String name, String username, int salary, String status, String password) {
 		if(roleID<0) return "roleID must not be empty";
 		if(name.isEmpty()) return "name must not be empty";
 		if(username.isEmpty()) return "username must not be empty";
