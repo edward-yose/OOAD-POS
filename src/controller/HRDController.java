@@ -1,7 +1,5 @@
 package controller;
 
-import connect.Connect;
-
 import java.util.Vector;
 
 import model.Employee;
@@ -26,7 +24,6 @@ public class HRDController {
 		return 0;
 	}
 	public static int updateEmployee (Integer id, Integer roleID, String name, String username, Integer salary, String password) {
-		
 		if(name.length()>0 && password.length()>0 && salary > 0) {
 			if(password.length()>0) {
 				password = username;
