@@ -191,7 +191,7 @@ public class View_Manager extends JFrame implements ActionListener {
 		productFrame.setTitle("TransactionItem View");
 		productFrame.setSize(600, 400);
 		productFrame.setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		// JScrollPane
 		JScrollPane scrollPane = new JScrollPane();
