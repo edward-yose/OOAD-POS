@@ -32,9 +32,9 @@ public class Product {
 		
 	}
 	
-	public static List<Product> getAllProducts() {
+	public static Vector<Product> getAllProducts() {
 		
-		List<Product> ProductList = new ArrayList<Product>();
+		Vector<Product> ProductList = new Vector<Product>();
 		
 		try {
 			Statement st = Connect.connect().createStatement();
@@ -53,68 +53,60 @@ public class Product {
 		return ProductList;
 	}
 	
-	public static Vector <Product> AddProduct(Integer id, String name, String description, Integer price, Integer stock) {
-		Vector<Product> prod = new Vector<Product>();
+	public boolean AddProduct() {
+		String query = "INSERT INTO Product VALUES(null, ?, ?, ?, ?, ?)";
+				try {
+					PreparedStatement ps = Connect.connect().prepareStatement(query);
+					ps.setInt(1, id);
+					ps.setString(2, name);
+					ps.setString(3, description);
+					ps.setInt(4, price);
+					ps.setInt(5, stock);
+					
+					return ps.executeUpdate() == 1;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
 		
-		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO product VALUES(?,?,?,?,?)");
-			ps.setInt(1, id);
-			ps.setString(2, name);
-			ps.setString(3, description);
-			ps.setInt(4, price);
-			ps.setInt(5, stock);
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				prod.add(new Product(
-						rs.getInt("id"),
-						rs.getString("name"),
-						rs.getString("description"),
-						rs.getInt("price"),
-						rs.getInt("stock")
-						));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return prod;
 	}
 		
-	public static int UpdateProduct(Product product) {
-		int status = 0;
-		
+	public boolean UpdateProduct() {
+		String query = "UPDATE Product SET name = ?, description = ?, price = ?, stock = ?";
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("UPDATE product SET name=?, description=?, price=?, stock=? WHERE id=?");
-			ps.setString(1, product.getName());
-			ps.setString(2, product.getDescription());
-			ps.setInt(3, product.getPrice());
-			ps.setInt(4, product.getStock());
-			ps.setInt(5, product.getId());
-			status = ps.executeUpdate();
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
+			ps.setString(1, name);
+			ps.setString(2, description);
+			ps.setInt(3, price);
+			ps.setInt(4, stock);
+			ps.setInt(5, id);
+			
+			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
-		
-		return status;
 	}
 	
-	public static int DeleteProduct(int id) {
-		
-		int status = 0;
+	public boolean DeleteProduct() {
+		String query = "DELETE FROM Product WHERE id = ?";
 		
 		try {
-			PreparedStatement ps = Connect.connect().prepareStatement("DELETE FROM product WHERE id=?");
+			PreparedStatement ps = Connect.connect().prepareStatement(query);
 			ps.setInt(1, id);
-			status = ps.executeUpdate();
+			
+			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
-		return status;
+	
+	
 	}
+		
 	
 	public static boolean selectExist(int productid) {
 		try {
