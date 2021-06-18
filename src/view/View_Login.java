@@ -114,6 +114,34 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		
 	}
 	
+	private void loginTransactionManagement(){
+		View_TransactionManagement viewTransactionManagement = new View_TransactionManagement();
+		viewTransactionManagement.setVisible(true);
+		dispose();
+		
+	}
+	
+	private void loginProduct(){
+		View_Product viewProduct = new View_Product();
+		viewProduct.setVisible(true);
+		dispose();
+		
+	}
+	
+	private void loginHRD(){
+		View_HRD viewHRD = new View_HRD();
+		viewHRD.setVisible(true);
+		dispose();
+		
+	}
+	
+	private void loginManager(){
+		View_Manager viewManager = new View_Manager();
+		viewManager.setVisible(true);
+		dispose();
+		
+	}
+	
 	private void loginEmployee() {
 		String username = fieldUsername.getText();
 		@SuppressWarnings("deprecation")
@@ -123,23 +151,19 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		
 		switch(EmployeeController.logEmployeeIn(username, password)) {
 			case 1: {
-				dispose();
-				new View_TransactionManagement();
+				loginTransactionManagement();
 				break;
 			}
 			case 2: {
-				dispose();
-				new View_Product();
+				loginProduct();
 				break;
 			}
 			case 3: {
-				dispose();
-				new View_HRD();
+				loginHRD();
 				break;
 			}
 			case 4: {
-				dispose();
-				new View_Manager();
+				loginManager();
 				break;
 			}
 			
@@ -160,20 +184,16 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == buttonViewHRD) {
-			dispose();
-			new View_HRD();
+			loginHRD();
 		}
 		else if (e.getSource() == buttonViewProduct) {
-			dispose();
-			new View_Product();
+			loginProduct();
 		}
 		else if (e.getSource() == buttonViewManager) {
-			dispose();
-			new View_Manager();
+			loginManager();
 		}
 		else if (e.getSource() == buttonViewTransactionManagement) {
-			dispose();
-			new View_TransactionManagement();
+			loginTransactionManagement();
 		}
 //		else if (e.getSource() == button) {
 //		

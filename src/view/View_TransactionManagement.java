@@ -119,7 +119,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		
 		add(panelCud);
 		
-		setVisible(true);
+		contentPane.setVisible(true);
 	}
 	
 	private void setUpDataModel() {

@@ -86,7 +86,7 @@ public class View_HRD extends JFrame implements ActionListener{
 		
 		add(panelCtrl);
 		
-		setVisible(true);
+		contentPane.setVisible(true);
 	}
 	
 	private void setUpDataModel() {

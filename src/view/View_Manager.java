@@ -46,7 +46,7 @@ public class View_Manager extends JFrame implements ActionListener {
 	private JFrame productFrame;
 	private JTable productTable;
 	private DefaultTableModel productDtm;
-	
+		
 	
 	private void initLayout() {
 		// JFrame
@@ -59,12 +59,14 @@ public class View_Manager extends JFrame implements ActionListener {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		contentPane.setLayout(new GridLayout(1, 1));
+		contentPane.setSize(800, 600);
 		setContentPane(contentPane);
 		
 		
 		
 		// JPanel TransactionReport
 		JPanel panelTransactionReport = new JPanel();
+		panelTransactionReport.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		panelTransactionReport.setLayout(new GridLayout(2, 1, 10, 10));
 		
 		// JScrollPane
@@ -82,7 +84,7 @@ public class View_Manager extends JFrame implements ActionListener {
 				int row = table.rowAtPoint(evt.getPoint());
 				int transactionid = (int) table.getValueAt(row, 0);
 				System.out.println("Row: " + row + ", transactionID: " + transactionid);
-				getAllTransactionItem(transactionid);
+				viewAllTransactionItem(transactionid);
 			}
 		});
 		
@@ -134,21 +136,23 @@ public class View_Manager extends JFrame implements ActionListener {
 		panelControl.add(panelButtons);		
 		
 		panelTransactionReport.add(panelControl);
-		
-		
-		
+
+				
 		// JPanel employeeControl
-		
+		View_HRD employeeControl = new View_HRD();
+		employeeControl.setVisible(false);
+		employeeControl.getContentPane().setVisible(true);
 		
 		
 		// JTabbedPane
 		JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.addTab("Transaction Report", panelTransactionReport);		
-		tabbedPane.addTab("Employee Management", new View_HRD().getContentPane());
+		tabbedPane.addTab("Transaction Report", panelTransactionReport);
+		tabbedPane.addTab("Employee Management", employeeControl.getContentPane());
 		
-		add(tabbedPane);
+		contentPane.add(tabbedPane);
 		
-		setVisible(true);
+		contentPane.setVisible(true);
+		
 	}
 
 	public View_Manager() {
@@ -235,7 +239,7 @@ public class View_Manager extends JFrame implements ActionListener {
 		return;
 	}
 	
-	private void getAllTransactionItem(int transactionId) {
+	private void viewAllTransactionItem(int transactionId) {
 		Vector<TransactionItem> transactionitems = TransactionController.getAllTransactionItem(transactionId);
 				
 		// Get table contents

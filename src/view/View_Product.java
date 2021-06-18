@@ -85,7 +85,7 @@ public class View_Product extends JFrame implements ActionListener{
 		
 		add(panelCtrl);
 		
-		setVisible(true);
+		contentPane.setVisible(true);
 	}
 	
 	private void setUpData() {
