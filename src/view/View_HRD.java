@@ -40,11 +40,11 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JButton AddBtn;
 	private JButton EditBtn;
 	private JButton DelBtn;
-	private Integer id;
-	private Integer roleID;
+	private int id;
+	private int roleID;
 	private String name;
 	private String username;
-	private Integer salary;
+	private int salary;
 	private String status;
 	private String password;
 	
@@ -316,7 +316,6 @@ private void DeleteUser() {
 			Delete.setVisible(true);
 		}
 		if(e.getSource() == AddBtn) {
-			HRDController.addUser(id, roleID, name, username, salary, status, password);
 			System.out.println("TRUE");
 			System.out.println("1 " + id);
 			System.out.println("2 " + roleID);
@@ -325,6 +324,7 @@ private void DeleteUser() {
 			System.out.println("5 " + salary);
 			System.out.println("6 " + status);
 			System.out.println("7 " + password);
+			HRDController.addUser(0, roleID, name, username, salary, status, password);
 		} else if (e.getSource() == EditBtn) {
 			HRDController.editUser(id, roleID, name, username, salary, status, password);
 		} else if (e.getSource() ==  DelBtn) {
