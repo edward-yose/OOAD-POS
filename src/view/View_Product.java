@@ -196,6 +196,8 @@ public class View_Product extends JFrame implements ActionListener{
 		String desc = Desc_Field.getText();
 		int price = (int) Price_Field.getValue();
 		int stock = (int) Stock_Field.getValue();	
+		
+		
 	}
 	
 
@@ -309,15 +311,12 @@ public class View_Product extends JFrame implements ActionListener{
 		if (e.getSource() == buttonAdd) {
 			AddProduct();
 			Add.setVisible(true);
-			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonDelete) {
 			DeleteProduct();
 			Delete.setVisible(true);
-			ProductM_Controller.DeleteProduct(id);
 		} else if (e.getSource() == buttonUpdate) {
 			UpdateProduct();
 			Update.setVisible(true);
-			ProductM_Controller.UpdateProduct(id, name, descrpition, price, stock);
 		} else if (e.getSource() == buttonAddToCart) {
 			viewCart.setVisible(true);
 		} 
