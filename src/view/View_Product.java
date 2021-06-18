@@ -155,7 +155,7 @@ public class View_Product extends JFrame implements ActionListener{
 		JTextField Id_Field = new JTextField();
 		Id_Field.setBounds(100, 30, 200, 30);
 		
-		JTextField Name_Field = new JTextField();
+		JTextField Name_Field = new JTextField(toString());
 		Name_Field.setBounds(100, 60, 200, 30);
 		
 		JTextField Desc_Field = new JTextField();
