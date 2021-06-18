@@ -20,7 +20,7 @@ public class EmployeeController {
 //		System.out.println("Password is: " + user.getPassword() + ". Entered password is: " + password);
 		
 		if(username.length() > 0 && password.length() > 0) {
-			if(user.getPassword() != null && user.getStatus() == "active" && user.getPassword().equals(password)) {
+			if(user.getPassword() != null && user.getStatus().equals("Active")&& user.getPassword().equals(password)) {
 				return user.getRoleID();
 			} else {
 				return -1;			

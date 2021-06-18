@@ -3,6 +3,7 @@ package view;
 import model.Cart;
 import model.Employee;
 import model.Product;
+import model.Transaction;
 import controller.CartController;
 import controller.ProductM_Controller;
 import controller.TransactionController;
@@ -22,12 +23,14 @@ import javax.swing.text.JTextComponent;
 
 public class View_TransactionManagement extends JFrame implements ActionListener{
 	private JTable table;
+	private JFrame history;
 	private DefaultTableModel dtm;
 	private JSpinner spinnerId;
 	private JSpinner spinnerQuantity;
 	private JButton buttonAdd;
 	private JButton buttonRemove;
 	private JButton buttonCheckOut;
+	private JButton buttonViewHistory;
 	private JLabel totalprice=new JLabel(); 
 
 	
@@ -115,6 +118,11 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		buttonCheckOut.addActionListener(this);
 		panelButtons.add(buttonCheckOut);
 		
+		// JButton history
+		buttonViewHistory = new JButton("View History");
+		buttonViewHistory.addActionListener(this);
+		panelButtons.add(buttonViewHistory);
+		
 		panelCud.add(panelButtons);
 		
 		add(panelCud);
@@ -186,6 +194,8 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		refreshData();	
 		JOptionPane.showMessageDialog(this, error);
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -195,6 +205,9 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			remove();
 		} else if (e.getSource() == buttonCheckOut) {
 			checkout();
+		}
+		else if(e.getSource()==buttonViewHistory) {
+			viewHistory();
 		}
 		
 	}
