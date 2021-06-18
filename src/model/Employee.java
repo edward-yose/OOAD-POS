@@ -12,7 +12,6 @@ import connect.Connect;
 
 public class Employee {
 	
-	
 	public static int idNow;
 	private Integer id;
 	private Integer roleID;
@@ -38,6 +37,10 @@ public class Employee {
 		this.salary = salary;
 		this.status = status;
 		this.password = password;
+	}
+	
+	public Employee() {
+
 	}
 	
 	
