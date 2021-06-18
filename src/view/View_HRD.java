@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -38,7 +39,14 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JFrame Delete;
 	private JButton AddBtn;
 	private JButton EditBtn;
-	private JButton DeleteBtn;
+	private JButton DelBtn;
+	private Integer id;
+	private Integer roleID;
+	private String name;
+	private String username;
+	private Integer salary;
+	private String status;
+	private String password;
 	
 	public View_HRD() {
 		initLayout();
@@ -147,7 +155,7 @@ private void AddUser() {
 		JLabel PasswordLabel = new JLabel("Password: ");
 		PasswordLabel.setBounds(20, 150, 200, 30);
 		
-		JTextField RoleField = new JTextField();
+		JSpinner RoleField = new JSpinner();
 		RoleField.setBounds(100, 30, 200, 30);
 		
 		JTextField NameField = new JTextField();
@@ -156,13 +164,14 @@ private void AddUser() {
 		JTextField UsernameField = new JTextField();
 		UsernameField.setBounds(100, 90, 200, 30);
 		
-		JTextField SalaryField = new JTextField();
+		JSpinner SalaryField = new JSpinner();
 		SalaryField.setBounds(100, 120, 200, 30);
 		
 		JTextField PasswordField = new JPasswordField();
 		PasswordField.setBounds(100, 150, 200, 30);
 
-		JButton AddBtn = new JButton("Add");
+		AddBtn = new JButton("Add");
+		AddBtn.addActionListener(this);
 		AddBtn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
@@ -178,6 +187,11 @@ private void AddUser() {
 		Cont.add(AddBtn);
 		Cont.add(PasswordField);
 		
+		roleID = (int) RoleField.getValue();
+		name = NameField.getText();
+		username = UsernameField.getText();
+		salary = (int)SalaryField.getValue();
+		password = PasswordField.getText();	
 	}
 
 private void EditUser() {
@@ -212,10 +226,10 @@ private void EditUser() {
 	JLabel PasswordLabel = new JLabel("Password: ");
 	PasswordLabel.setBounds(20, 180, 200, 30);
 	
-	JTextField IDField = new JTextField();
+	JSpinner IDField = new JSpinner();
 	IDField.setBounds(100, 30, 200, 30);
 	
-	JTextField RoleField = new JTextField();
+	JSpinner RoleField = new JSpinner();
 	RoleField.setBounds(100, 60, 200, 30);
 	
 	JTextField NameField = new JTextField();
@@ -224,13 +238,14 @@ private void EditUser() {
 	JTextField UsernameField = new JTextField();
 	UsernameField.setBounds(100, 120, 200, 30);
 	
-	JTextField SalaryField = new JTextField();
+	JSpinner SalaryField = new JSpinner();
 	SalaryField.setBounds(100, 150, 200, 30);
 	
 	JTextField PasswordField = new JPasswordField();
 	PasswordField.setBounds(100, 180, 200, 30);
 
-	JButton EditBtn = new JButton("Update");
+	EditBtn = new JButton("Update");
+	EditBtn.addActionListener(this);
 	EditBtn.setBounds(150, 225, 100, 30);
 	
 	Cont.add(Title);
@@ -248,6 +263,12 @@ private void EditUser() {
 	Cont.add(PasswordField);
 	Cont.add(EditBtn);
 	
+	id = (int) IDField.getValue();
+	roleID = (int) RoleField.getValue();
+	name = NameField.getText();
+	username = UsernameField.getText();
+	salary = (int)SalaryField.getValue();
+	password = PasswordField.getText();	
 }
 
 private void DeleteUser() {
@@ -267,10 +288,11 @@ private void DeleteUser() {
 	JLabel IDLabel = new JLabel("ID: ");
 	IDLabel.setBounds(20, 30, 200, 30);
 	
-	JTextField IDField = new JTextField();
+	JSpinner IDField = new JSpinner();
 	IDField.setBounds(100, 30, 200, 30);
 
-	JButton DelBtn = new JButton("Delete");
+	DelBtn = new JButton("Delete");
+	DelBtn.addActionListener(this);
 	DelBtn.setBounds(150, 75, 100, 30);
 	
 	Cont.add(Title);
@@ -278,6 +300,7 @@ private void DeleteUser() {
 	Cont.add(IDField);
 	Cont.add(DelBtn);
 	
+	id = (int) IDField.getValue();
 }
 	
 	@Override
@@ -291,6 +314,21 @@ private void DeleteUser() {
 		} else if (e.getSource() == delete_user) {
 			DeleteUser();
 			Delete.setVisible(true);
+		}
+		if(e.getSource() == AddBtn) {
+			HRDController.addUser(id, roleID, name, username, salary, status, password);
+			System.out.println("TRUE");
+			System.out.println("1 " + id);
+			System.out.println("2 " + roleID);
+			System.out.println("3 " + name);
+			System.out.println("4 " + username);
+			System.out.println("5 " + salary);
+			System.out.println("6 " + status);
+			System.out.println("7 " + password);
+		} else if (e.getSource() == EditBtn) {
+			HRDController.editUser(id, roleID, name, username, salary, status, password);
+		} else if (e.getSource() ==  DelBtn) {
+			HRDController.deleteUser(id);
 		}
 		
 	}

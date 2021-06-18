@@ -37,11 +37,11 @@ public class View_Product extends JFrame implements ActionListener{
 	private JFrame Delete;
 	private JFrame Update;
 	private View_TransactionManagement viewCart;
-	int id;
-	String name;
-	String descrpition;
-	int price;
-	int stock;
+	private int id;
+	private String name;
+	private String desc;
+	private int price;
+	private int stock;
 	
 	public View_Product(int roleID) {
 		initLayout(roleID);
@@ -146,12 +146,9 @@ public class View_Product extends JFrame implements ActionListener{
 	}
 	
 	private void prepCartFrame() {
-		
 		viewCart = new View_TransactionManagement();
 		viewCart.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
 	}
-
 	
 	private void AddProduct() {
 		
@@ -214,16 +211,12 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Stock_Field);
 		Cont.add(buttonAIn);
 		
-		int id = (int) Id_Field.getValue();
-		String name = Name_Field.getText();
-		String desc = Desc_Field.getText();
-		int price = (int) Price_Field.getValue();
-		int stock = (int) Stock_Field.getValue();	
-		
-		
+		id = (int) Id_Field.getValue();
+		name = Name_Field.getText();
+		desc = Desc_Field.getText();
+		price = (int) Price_Field.getValue();
+		stock = (int) Stock_Field.getValue();		
 	}
-	
-
 
 	private void DeleteProduct() {
 		Delete = new JFrame();
@@ -253,9 +246,8 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Id_Field);
 		Cont.add(buttonDIn);
 		
-		int id = (int) Id_Field.getValue();
-				
-		
+		id = (int) Id_Field.getValue();
+
 	}
 	
 	private void UpdateProduct() {
@@ -320,16 +312,12 @@ public class View_Product extends JFrame implements ActionListener{
 		Cont.add(Stock_Field);
 		Cont.add(buttonUIn);
 		
-		int id = (int) Id_Field.getValue();
-		String name = Name_Field.getText();
-		String desc = Desc_Field.getText();
-		int price = (int) Price_Field.getValue();
-		int stock = (int) Stock_Field.getValue();
-		
-		
+		id = (int) Id_Field.getValue();
+		name = Name_Field.getText();
+		desc = Desc_Field.getText();
+		price = (int) Price_Field.getValue();
+		stock = (int) Stock_Field.getValue();	
 	}
-	
-	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -345,8 +333,11 @@ public class View_Product extends JFrame implements ActionListener{
 		} else if (e.getSource() == buttonAddToCart) {
 			viewCart.setVisible(true);
 		} else if (e.getSource() == buttonAIn) {
-			ProductM_Controller.AddProduct(id, name, descrpition, price, stock);
-			System.out.println("TRUE");
+			ProductM_Controller.AddProduct(id, name, desc, price, stock);
+		} else if (e.getSource() == buttonUIn) {
+			ProductM_Controller.UpdateProduct(id, name, desc, price, stock);
+		} else if (e.getSource() == buttonAIn) {
+			ProductM_Controller.DeleteProduct(id);
 		}
 		
 	}
