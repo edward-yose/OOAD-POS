@@ -11,11 +11,8 @@ public class Role {
 	
 	private Integer id;
 	private String name;
-	
 	private Connect con;
 	
-
-
 	public Role(int id, String name) {
 		this.id = id;
 		this.name = name;
@@ -23,7 +20,6 @@ public class Role {
 	
 	public static Vector<Role> getAllRole(){
 		Vector<Role> results = new Vector<Role>();
-		
 		try {
 			Statement st = Connect.connect().createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM role");
@@ -35,7 +31,6 @@ public class Role {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
@@ -59,7 +54,6 @@ public class Role {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -81,5 +75,4 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

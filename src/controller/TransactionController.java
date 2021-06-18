@@ -10,7 +10,6 @@ import model.TransactionItem;
 
 public class TransactionController {
 	
-	
 	public static Vector<Transaction> getAllTransactions() {
 		return Transaction.getAllTransaction();
 	}
@@ -41,7 +40,7 @@ public class TransactionController {
 	}
 
 	public TransactionController() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

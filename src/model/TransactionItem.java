@@ -58,7 +58,6 @@ public class TransactionItem {
 					));				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -88,5 +87,4 @@ public class TransactionItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import model.Cart;
 import model.Product;
 
-
 public class CartController {
 	
 	private static int grandTotal=0;
@@ -50,10 +49,7 @@ public class CartController {
 					return null;
 				}
 		}
-		
-
 	}
-
 	
 	public static String removeItem(int productid,int qty) {
 		if(productid==0) {
@@ -72,7 +68,6 @@ public class CartController {
 		}
 		else {
 			grandTotal-=Product.getPrice(productid)*cartqty;
-			
 			return null;
 		}
 	}
@@ -82,15 +77,11 @@ public class CartController {
 		return "Data Saved!";
 	}
 
-
 	public static void setGrandTotal(int grandTotal) {
 		CartController.grandTotal = grandTotal;
 	}
 
-
 	public static int getGrandTotal() {
 		return grandTotal;
 	}
-
-
 }

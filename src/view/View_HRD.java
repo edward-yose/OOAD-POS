@@ -314,7 +314,5 @@ private void DeleteUser() {
 			refreshData();
 			Delete.setVisible(false);
 		}
-		
 	}
-	
 }

@@ -15,8 +15,6 @@ public class TransactionItemController {
 	private int productID;
 	private int quantity;
 	
-	
-	
 	public TransactionItemController(int transactionid, int productid,int qty) {
 		this.transactionid=transactionid;
 		this.productID=productid;
@@ -33,7 +31,4 @@ public class TransactionItemController {
 				return null;
 			}
 	}
-	
-	
-	
 }

@@ -23,9 +23,7 @@ public class Transaction {
 		this.employeeId = employeeId;
 		this.paymentType = paymentType;
 	}
-	
-	
-	
+
 	public static Vector<Transaction> getAllTransaction(){
 		Vector<Transaction> results = new Vector<Transaction>();
 		
@@ -42,10 +40,8 @@ public class Transaction {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
 		return results;
 	}
 		
@@ -73,7 +69,6 @@ public class Transaction {
 					));				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -92,10 +87,7 @@ public class Transaction {
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
-	
-	
 	
 	public Integer getId() {
 		return id;
@@ -141,11 +133,7 @@ public class Transaction {
 		return con;
 	}
 
-
 	public void setCon(Connect con) {
 		this.con = con;
 	}
-	
-	
-	
 }

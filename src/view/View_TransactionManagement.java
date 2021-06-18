@@ -22,8 +22,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 
-
-
 public class View_TransactionManagement extends JFrame implements ActionListener{
 	private JTable table;
 	private DefaultTableModel dtm;
@@ -86,7 +84,6 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		JLabel labelId = new JLabel("Product Id: ");
 		labelId.setHorizontalAlignment(SwingConstants.RIGHT);
 		panelFields.add(labelId);
-	
 		
 		// JLabel Quantity
 		JLabel labelQuantity = new JLabel("Quantity: ");
@@ -136,9 +133,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		panelButtons.add(buttonViewHistory);
 		
 		panelCud.add(panelButtons);
-		
 		add(panelCud);
-		
 		contentPane.setVisible(true);
 	}
 	
@@ -161,7 +156,6 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			});
 		}
 		totalprice.setText(String.valueOf(CartController.getGrandTotal()));
-	
 	}
 	
 	private void prepHistoryFrame() {
@@ -190,7 +184,6 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 			public void mouseClicked(MouseEvent evt) {
 				int row = historyTable.rowAtPoint(evt.getPoint());
 				int transactionid = (int) historyTable.getValueAt(row, 0);
-//				System.out.println("Row: " + row + ", transactionID: " + transactionid);
 				viewAllTransactionItem(transactionid);
 			}
 		});
@@ -210,7 +203,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 	private void viewHistory() {
 		
 		Vector<Transaction> transactions = TransactionController.getTodayTransaction();
-		
+
 		// Get table contents
 		historyDtm.setRowCount(0);
 		
@@ -344,6 +337,5 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		else if(e.getSource()==buttonViewHistory) {
 			viewHistory();
 		}
-		
 	}
 }

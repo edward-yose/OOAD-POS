@@ -17,7 +17,6 @@ public class Product {
 	private String description;
 	private Integer price;
 	private Integer stock;
-	
 	private Connect conn;
 	
 	public Product(Integer id, String name, String description, Integer price, Integer stock) {
@@ -50,10 +49,8 @@ public class Product {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return ProductV;
 	}
 	
@@ -69,11 +66,9 @@ public class Product {
 					
 					return ps.executeUpdate() == 1;
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					return false;
 				}
-		
 	}
 		
 	public boolean UpdateProduct() {
@@ -88,7 +83,6 @@ public class Product {
 			
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -103,15 +97,11 @@ public class Product {
 			
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
-	
-	
 	}
 		
-	
 	public static boolean selectExist(int productid) {
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement("Select * FROM product WHERE id=?");
@@ -147,7 +137,6 @@ public class Product {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
-
 		}	
 	}
 	
@@ -172,7 +161,6 @@ public class Product {
 		}
 			
 	}
-	
 	
 	public Integer getId() {
 		return id;
@@ -221,7 +209,5 @@ public class Product {
 	public void setConn(Connect conn) {
 		this.conn = conn;
 	}
-	
-	
 }
 

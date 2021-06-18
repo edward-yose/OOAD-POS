@@ -8,7 +8,6 @@ public class Connect {
 	
 	public static Connection connect() {
 		if (conn == null) {
-			// pengaturan utama ke database
 			MysqlDataSource source = new MysqlDataSource();
 			source.setServerName("localhost");
 			source.setUser("root");
@@ -18,15 +17,10 @@ public class Connect {
 			try {
 				conn = source.getConnection();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("failed to connect");
 			}
 		}
-		
 		return conn;
-	}
-	
-	
-		
+	}	
 }

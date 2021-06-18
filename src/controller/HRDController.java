@@ -19,8 +19,7 @@ public class HRDController {
 		if(password.isEmpty()) password = username;
 		
 		Employee e = new Employee(Employee.getAllEmployee().size()+1, roleID, name, username, salary, status, password);
-		boolean isSuccess = e.add_user();
-		
+		boolean isSuccess = e.add_user();		
 		if(!isSuccess) return "add failed"; 
 		else return null;
 		
@@ -36,8 +35,7 @@ public class HRDController {
 		
 		if(!isSuccess) return "edit failed"; 
 		else return null;
-		
-	}
+		}
 	
 	public static String deleteUser(int id) {
 		
@@ -45,8 +43,7 @@ public class HRDController {
 		boolean isSuccess = e.delete_user();
 		
 		if(!isSuccess) return "delete failed"; 
-		else return null;
-		
+		else return null;		
 	}
 	
 	

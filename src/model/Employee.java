@@ -38,10 +38,8 @@ public class Employee {
 
 	}
 	
-	
 	public static Vector<Employee> getAllEmployee(){
 		Vector<Employee> results = new Vector<Employee>();
-		
 		try {
 			Statement st = Connect.connect().createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM employee");
@@ -58,10 +56,8 @@ public class Employee {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
 		return results;
 	}
 	
@@ -86,7 +82,6 @@ public class Employee {
 					));				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -118,19 +113,15 @@ public class Employee {
 				results.add(new Employee(0,null,null,null,null,null,null));
 			}
 
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return results.get(0);
 	}
 	
-	
 	public boolean add_user(){
 		String query = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, 'Active', ?)";
-		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
 			ps.setInt(1, id);
@@ -141,7 +132,6 @@ public class Employee {
 			ps.setString(6, password);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -160,7 +150,6 @@ public class Employee {
 			ps.setInt(6, id);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -174,7 +163,6 @@ public class Employee {
 			ps.setInt(1,  id);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
