@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ProductM_Controller;
+import model.Product;
 
 
 public class View_Product extends JFrame implements ActionListener{
@@ -43,6 +46,7 @@ public class View_Product extends JFrame implements ActionListener{
 	public View_Product(int roleID) {
 		initLayout(roleID);
 		setUpData();
+		refreshData();
 		AddProduct();
 		DeleteProduct();
 		UpdateProduct();
@@ -124,6 +128,21 @@ public class View_Product extends JFrame implements ActionListener{
 			0
 		);
 		table.setModel(dtm);
+	}
+	
+	private void refreshData() {
+		dtm.setRowCount(0);
+		Vector<Product> products = ProductM_Controller.getAllProduct();
+		
+		for(Product i : products) {
+			dtm.addRow(new Object[] {
+					i.getId(),
+					i.getName(),
+					i.getDescription(),
+					i.getPrice(),
+					i.getStock()
+			});
+		}
 	}
 	
 	private void prepCartFrame() {
