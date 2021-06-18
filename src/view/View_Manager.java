@@ -83,7 +83,6 @@ public class View_Manager extends JFrame implements ActionListener {
 			public void mouseClicked(MouseEvent evt) {
 				int row = table.rowAtPoint(evt.getPoint());
 				int transactionid = (int) table.getValueAt(row, 0);
-//				System.out.println("Row: " + row + ", transactionID: " + transactionid);
 				viewAllTransactionItem(transactionid);
 			}
 		});
@@ -222,8 +221,6 @@ public class View_Manager extends JFrame implements ActionListener {
 		int month = comboBoxMonth.getSelectedIndex() + 1;
 		int year = (int)spinnerYear.getValue();
 		
-//		System.out.println("Month: " + month + ", and year: " + year);
-		
 		dtm.setRowCount(0);
 		Vector<Transaction> transactions = TransactionController.viewTransactionReport(month, year);
 		
@@ -242,7 +239,6 @@ public class View_Manager extends JFrame implements ActionListener {
 	private void viewAllTransactionItem(int transactionId) {
 		Vector<TransactionItem> transactionitems = TransactionController.getAllTransactionItem(transactionId);
 				
-		// Get table contents
 		productDtm.setRowCount(0);
 		
 		for (TransactionItem i : transactionitems) {
@@ -260,7 +256,6 @@ public class View_Manager extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == buttonQuery) {		
 			getTransactionReport();
 		}

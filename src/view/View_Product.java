@@ -164,47 +164,39 @@ public class View_Product extends JFrame implements ActionListener{
 		JLabel Title = new JLabel("Add Product");
 		Title.setBounds(120, 5, 200, 30);
 		
-		JLabel Id_Label = new JLabel("Product ID: ");
-		Id_Label.setBounds(20, 30, 200, 30);
-		
 		JLabel Name_Label = new JLabel("Name: ");
-		Name_Label.setBounds(20, 60, 200, 30);
+		Name_Label.setBounds(20, 30, 200, 30);
 		
 		JLabel Desc_Label = new JLabel("Description: ");
-		Desc_Label.setBounds(20, 90, 200, 30);
+		Desc_Label.setBounds(20, 60, 200, 30);
 		
 		JLabel Price_Label = new JLabel("Price: ");
-		Price_Label.setBounds(20, 120, 200, 30);
+		Price_Label.setBounds(20, 90, 200, 30);
 		
 		JLabel Stock_Label = new JLabel("Stock: ");
-		Stock_Label.setBounds(20, 150, 200, 30);
-		
-		Id_Field = new JSpinner();
-		Id_Field.setBounds(100, 30, 200, 30);
+		Stock_Label.setBounds(20, 120, 200, 30);
 		
 		Name_Field = new JTextField();
-		Name_Field.setBounds(100, 60, 200, 30);
+		Name_Field.setBounds(100, 30, 200, 30);
 		
 		Desc_Field = new JTextField();
-		Desc_Field.setBounds(100, 90, 200, 30);
+		Desc_Field.setBounds(100, 60, 200, 30);
 		
 		Price_Field = new JSpinner();
-		Price_Field.setBounds(100, 120, 200, 30);
+		Price_Field.setBounds(100, 90, 200, 30);
 		
 		Stock_Field = new JSpinner();
-		Stock_Field.setBounds(100, 150, 200, 30);
+		Stock_Field.setBounds(100, 120, 200, 30);
 
 		buttonAIn = new JButton("Add");
 		buttonAIn.addActionListener(this);
 		buttonAIn.setBounds(150, 200, 100, 30);
 		
 		Cont.add(Title);
-		Cont.add(Id_Label);
 		Cont.add(Name_Label);
 		Cont.add(Desc_Label);
 		Cont.add(Price_Label);
 		Cont.add(Stock_Label);
-		Cont.add(Id_Field);
 		Cont.add(Name_Field);
 		Cont.add(Desc_Field);
 		Cont.add(Price_Field);
@@ -319,7 +311,7 @@ public class View_Product extends JFrame implements ActionListener{
 		} else if (e.getSource() == buttonAddToCart) {
 			viewCart.setVisible(true);
 		} else if (e.getSource() == buttonAIn) {
-			ProductM_Controller.AddProduct((int) Id_Field.getValue(), Name_Field.getText(), Desc_Field.getText(), (int) Price_Field.getValue(), (int) Stock_Field.getValue());
+			ProductM_Controller.AddProduct(0, Name_Field.getText(), Desc_Field.getText(), (int) Price_Field.getValue(), (int) Stock_Field.getValue());
 			refreshData();
 			Add.setVisible(false);
 		} else if (e.getSource() == buttonUIn) {
