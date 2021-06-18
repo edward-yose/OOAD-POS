@@ -162,7 +162,7 @@ public class View_TransactionManagement extends JFrame implements ActionListener
 		
 		historyFrame = new JFrame();
 		
-		historyFrame.setTitle("Transaction View");
+		historyFrame.setTitle("Transaction History View");
 		historyFrame.setSize(600, 400);
 		historyFrame.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
