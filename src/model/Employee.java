@@ -129,7 +129,7 @@ public class Employee {
 	
 	
 	public boolean add_user(){
-		String query = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, 'active', ?)";
+		String query = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, 'Active', ?)";
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);

@@ -40,13 +40,12 @@ public class View_HRD extends JFrame implements ActionListener{
 	private JButton AddBtn;
 	private JButton EditBtn;
 	private JButton DelBtn;
-	private int id;
-	private int roleID;
-	private String name;
-	private String username;
-	private int salary;
-	private String status;
-	private String password;
+	
+	JSpinner RoleField;
+	JTextField NameField;
+	JTextField UsernameField;
+	JSpinner SalaryField;		
+	JTextField PasswordField;
 	
 	public View_HRD() {
 		initLayout();
@@ -155,19 +154,19 @@ private void AddUser() {
 		JLabel PasswordLabel = new JLabel("Password: ");
 		PasswordLabel.setBounds(20, 150, 200, 30);
 		
-		JSpinner RoleField = new JSpinner();
+		RoleField = new JSpinner();
 		RoleField.setBounds(100, 30, 200, 30);
 		
-		JTextField NameField = new JTextField();
+		NameField = new JTextField();
 		NameField.setBounds(100, 60, 200, 30);
 		
-		JTextField UsernameField = new JTextField();
+		UsernameField = new JTextField();
 		UsernameField.setBounds(100, 90, 200, 30);
 		
-		JSpinner SalaryField = new JSpinner();
+		SalaryField = new JSpinner();
 		SalaryField.setBounds(100, 120, 200, 30);
 		
-		JTextField PasswordField = new JPasswordField();
+		PasswordField = new JPasswordField();
 		PasswordField.setBounds(100, 150, 200, 30);
 
 		AddBtn = new JButton("Add");
@@ -186,12 +185,6 @@ private void AddUser() {
 		Cont.add(SalaryField);
 		Cont.add(AddBtn);
 		Cont.add(PasswordField);
-		
-		roleID = (int) RoleField.getValue();
-		name = NameField.getText();
-		username = UsernameField.getText();
-		salary = (int)SalaryField.getValue();
-		password = PasswordField.getText();	
 	}
 
 private void EditUser() {
@@ -262,13 +255,6 @@ private void EditUser() {
 	Cont.add(SalaryField);
 	Cont.add(PasswordField);
 	Cont.add(EditBtn);
-	
-	id = (int) IDField.getValue();
-	roleID = (int) RoleField.getValue();
-	name = NameField.getText();
-	username = UsernameField.getText();
-	salary = (int)SalaryField.getValue();
-	password = PasswordField.getText();	
 }
 
 private void DeleteUser() {
@@ -300,7 +286,7 @@ private void DeleteUser() {
 	Cont.add(IDField);
 	Cont.add(DelBtn);
 	
-	id = (int) IDField.getValue();
+//	id = (int) IDField.getValue();
 }
 	
 	@Override
@@ -316,19 +302,13 @@ private void DeleteUser() {
 			Delete.setVisible(true);
 		}
 		if(e.getSource() == AddBtn) {
-			System.out.println("TRUE");
-			System.out.println("1 " + id);
-			System.out.println("2 " + roleID);
-			System.out.println("3 " + name);
-			System.out.println("4 " + username);
-			System.out.println("5 " + salary);
-			System.out.println("6 " + status);
-			System.out.println("7 " + password);
-			HRDController.addUser(0, roleID, name, username, salary, status, password);
+			HRDController.addUser(0, (int) RoleField.getValue(), NameField.getText(), UsernameField.getText(), (int) SalaryField.getValue(), "Active", PasswordField.getText());
+			refreshData();
+			Add.setVisible(false);
 		} else if (e.getSource() == EditBtn) {
-			HRDController.editUser(id, roleID, name, username, salary, status, password);
+//			HRDController.editUser(id, roleID, name, username, salary, status, password);
 		} else if (e.getSource() ==  DelBtn) {
-			HRDController.deleteUser(id);
+//			HRDController.deleteUser(id);
 		}
 		
 	}

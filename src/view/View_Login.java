@@ -7,6 +7,7 @@ import view.View_TransactionManagement;
 
 import controller.EmployeeController;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -45,7 +46,8 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		
 		// JPanel contentPane
 		JPanel contentPane = new JPanel();
-		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+//		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		contentPane.setLayout(new BorderLayout());
 		setContentPane(contentPane);
 				
 		// JPanel Buttons
@@ -71,8 +73,6 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		buttonViewTransactionManagement = new JButton("Transaction Management");
 		buttonViewTransactionManagement.addActionListener(this);
 		panelButtons.add(buttonViewTransactionManagement);
-
-		add(panelButtons);
 		
 		
 		// JPanel Login
@@ -106,8 +106,10 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		buttonLogin.addActionListener(this);
 		panelLogin.add(buttonLogin);
 		
-		add(panelLogin);
+
+		add(panelButtons);
 		
+		add(panelLogin, BorderLayout.SOUTH);		
 
 		setVisible(true);
 
