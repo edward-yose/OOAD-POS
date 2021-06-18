@@ -148,7 +148,7 @@ public class Employee {
 	}
 	
 	public boolean edit_user(){
-		String query = "UPDATE employee SET roleID = ?, name = ? ,  username = ? salary = ?, password = ? WHERE id = ?";
+		String query = "UPDATE employee SET roleID = ?, name = ? ,  username = ?, salary = ?, password = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement(query);
