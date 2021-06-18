@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -32,6 +33,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 	private JButton buttonViewManager;
 	private JButton buttonViewTransactionManagement;
 	private JButton buttonViewProduct;
+	
 	
 	private JTextField fieldUsername;
 	private JPasswordField fieldPassword;
@@ -46,7 +48,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		
 		// JPanel contentPane
 		JPanel contentPane = new JPanel();
-//		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
 		contentPane.setLayout(new BorderLayout());
 		setContentPane(contentPane);
 				
@@ -73,8 +75,7 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		buttonViewTransactionManagement = new JButton("Transaction Management");
 		buttonViewTransactionManagement.addActionListener(this);
 //		panelButtons.add(buttonViewTransactionManagement);
-		
-		
+
 		// JPanel Login
 		JPanel panelLogin = new JPanel();
 		panelLogin.setLayout(new FlowLayout());
