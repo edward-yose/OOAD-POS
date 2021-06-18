@@ -287,7 +287,6 @@ private void DeleteUser() {
 	Cont.add(IDField);
 	Cont.add(DelBtn);
 	
-//	id = (int) IDField.getValue();
 }
 	
 	@Override

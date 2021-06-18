@@ -12,14 +12,6 @@ public class HRDController {
 	}
 
 	public static String addUser(int id, int roleID, String name, String username, int salary, String status, String password) {
-		System.out.println("TRUE2");
-		System.out.println("1 " + id);
-		System.out.println("2 " + roleID);
-		System.out.println("3 " + name);
-		System.out.println("4 " + username);
-		System.out.println("5 " + salary);
-		System.out.println("6 " + status);
-		System.out.println("7 " + password);
 		if(roleID<0) return "roleID must not be empty";
 		if(name.isEmpty()) return "name must not be empty";
 		if(username.isEmpty()) return "username must not be empty";
@@ -40,7 +32,7 @@ public class HRDController {
 		if(salary<=0) return "salary must not be 0 nor negaive value";
 		
 		Employee e = new Employee(id, roleID, name, username, salary, status, password);
-		boolean isSuccess = e.add_user();
+		boolean isSuccess = e.edit_user();
 		
 		if(!isSuccess) return "add failed"; 
 		else return null;
@@ -50,7 +42,7 @@ public class HRDController {
 	public static String deleteUser(int id) {
 		
 		Employee e = new Employee(id, null, null, null, null, "Not Active", null);
-		boolean isSuccess = e.add_user();
+		boolean isSuccess = e.delete_user();
 		
 		if(!isSuccess) return "add failed"; 
 		else return null;
