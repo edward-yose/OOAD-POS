@@ -12,8 +12,15 @@ public class HRDController {
 	}
 
 	public static String addUser(int id, int roleID, String name, String username, int salary, String status, String password) {
+		System.out.println("TRUE2");
+		System.out.println("1 " + id);
+		System.out.println("2 " + roleID);
+		System.out.println("3 " + name);
+		System.out.println("4 " + username);
+		System.out.println("5 " + salary);
+		System.out.println("6 " + status);
+		System.out.println("7 " + password);
 		if(roleID<0) return "roleID must not be empty";
-		System.out.println("YAY");
 		if(name.isEmpty()) return "name must not be empty";
 		if(username.isEmpty()) return "username must not be empty";
 		if(salary<=0) return "salary must not be 0 nor negaive value";
