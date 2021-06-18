@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Vector;
 
 import connect.Connect;
 
@@ -53,8 +53,8 @@ public class Product {
 		return ProductList;
 	}
 	
-	public static Product AddProduct(int id, String name, String description, int price, int stock) {
-		List<Product> prod = new ArrayList<Product>();
+	public static Vector <Product> AddProduct(Integer id, String name, String description, Integer price, Integer stock) {
+		Vector<Product> prod = new Vector<Product>();
 		
 		try {
 			PreparedStatement ps = Connect.connect().prepareStatement("INSERT INTO product VALUES(?,?,?,?,?)");
@@ -79,7 +79,7 @@ public class Product {
 			e.printStackTrace();
 		}
 		
-		return prod.get(0);
+		return prod;
 	}
 		
 	public static int UpdateProduct(Product product) {
