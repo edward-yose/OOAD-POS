@@ -90,7 +90,7 @@ public class View_HRD extends JFrame implements ActionListener{
 		panelButtons.add(edit_user);
 		
 		// JButton Delete
-		delete_user = new JButton("Delete user");
+		delete_user = new JButton("Fire user");
 		delete_user.addActionListener(this);
 		panelButtons.add(delete_user);
 		
@@ -262,14 +262,14 @@ private void DeleteUser() {
 	
 	Delete = new JFrame();
 	
-	Delete.setTitle("Delete User");
+	Delete.setTitle("Fire User");
 	Delete.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	Delete.setBounds(200, 200, 400, 300);
 	
 	Container Cont = Delete.getContentPane();
 	Cont.setLayout(null);
 	
-	JLabel Title = new JLabel("Delete User");
+	JLabel Title = new JLabel("Fire User");
 	Title.setBounds(120, 5, 200, 30);
 	
 	JLabel IDLabel = new JLabel("ID: ");
@@ -278,7 +278,7 @@ private void DeleteUser() {
 	IDField = new JSpinner();
 	IDField.setBounds(100, 30, 200, 30);
 
-	DelBtn = new JButton("Delete");
+	DelBtn = new JButton("Fire");
 	DelBtn.addActionListener(this);
 	DelBtn.setBounds(150, 75, 100, 30);
 	
