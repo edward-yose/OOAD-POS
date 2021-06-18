@@ -57,22 +57,22 @@ public class View_Login extends JFrame implements ActionListener, KeyListener {
 		// JButton HRD
 		buttonViewHRD = new JButton("HRD");
 		buttonViewHRD.addActionListener(this);
-		panelButtons.add(buttonViewHRD);
+//		panelButtons.add(buttonViewHRD);
 				
 		// JButton Product
 		buttonViewProduct = new JButton("Product");
 		buttonViewProduct.addActionListener(this);
-		panelButtons.add(buttonViewProduct);
+//		panelButtons.add(buttonViewProduct);
 		
 		// JButton Manager
 		buttonViewManager = new JButton("Manager");
 		buttonViewManager.addActionListener(this);
-		panelButtons.add(buttonViewManager);
+//		panelButtons.add(buttonViewManager);
 		
 		// JButton Transaction Management
 		buttonViewTransactionManagement = new JButton("Transaction Management");
 		buttonViewTransactionManagement.addActionListener(this);
-		panelButtons.add(buttonViewTransactionManagement);
+//		panelButtons.add(buttonViewTransactionManagement);
 		
 		
 		// JPanel Login
